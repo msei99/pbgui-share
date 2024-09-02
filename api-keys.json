@@ -1,0 +1,13 @@
+{
+    "bybit_CPT1": {
+        "exchange": "bybit",
+        "key": "",
+        "secret": ""
+    },
+    "hl_manicpt": {
+        "exchange": "hyperliquid",
+        "wallet_address": "",
+        "private_key": "",
+        "is_vault": true
+    }
+}
