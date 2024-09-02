@@ -80,6 +80,8 @@ class Exchange:
     def connect(self):
         self.instance = getattr(ccxt, self.id) ()
         self.instance.wsProxy = 'http://3.78.92.159:80/'
+        self.instance.wssProxy = 'http://3.78.92.159:80/'
+        self.instance.httpProxy = 'http://3.78.92.159:80/'
         if self._user and self.user.key != 'key':
             self.instance.apiKey = self.user.key
             self.instance.secret = self.user.secret
