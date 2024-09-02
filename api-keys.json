@@ -1,5 +1,45 @@
 {
+    "binance_CPT": {
+        "exchange": "binance",
+        "key": "",
+        "secret": ""
+    },
     "bybit_CPT1": {
+        "exchange": "bybit",
+        "key": "",
+        "secret": ""
+    },
+    "bybit_CPT2": {
+        "exchange": "bybit",
+        "key": "",
+        "secret": ""
+    },
+    "bybit_CPT3": {
+        "exchange": "bybit",
+        "key": "",
+        "secret": ""
+    },
+    "bybit_CPT4": {
+        "exchange": "bybit",
+        "key": "",
+        "secret": ""
+    },
+    "bybit_CPTDOGEONLY": {
+        "exchange": "bybit",
+        "key": "",
+        "secret": ""
+    },
+    "bybit_CPTForagerHR": {
+        "exchange": "bybit",
+        "key": "",
+        "secret": ""
+    },
+    "bybit_CPTForagerMR": {
+        "exchange": "bybit",
+        "key": "",
+        "secret": ""
+    },
+    "bybit_CPTPro": {
         "exchange": "bybit",
         "key": "",
         "secret": ""
@@ -9,5 +49,31 @@
         "wallet_address": "",
         "private_key": "",
         "is_vault": true
+    },
+    "manibybit08": {
+        "exchange": "bybit",
+        "key": "",
+        "secret": ""
+    },
+    "manibybit09": {
+        "exchange": "bybit",
+        "key": "",
+        "secret": ""
+    },
+    "manicpthighroller": {
+        "exchange": "bybit",
+        "key": "",
+        "secret": ""
+    },
+    "okx_MAINCPT": {
+        "exchange": "okx",
+        "key": "",
+        "secret": "",
+        "passphrase": ""
+    },
+    "tikverylowrisk": {
+        "exchange": "bybit",
+        "key": "",
+        "secret": ""
     }
 }
