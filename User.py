@@ -75,10 +75,6 @@ class Users:
     def list(self):
         return list(map(lambda c: c.name, self.users))
     
-    def list_single(self):
-        from Exchange import Single
-        return list(map(lambda c: c.name, filter(lambda c: c.exchange in Single.list(), self.users)))
-
     def default(self):
         if self.users:
             return self.users[0].name
