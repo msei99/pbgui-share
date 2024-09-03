@@ -1,6 +1,5 @@
 import streamlit as st
 from Database import Database
-from Exchange import Exchange
 from User import Users, User
 import pandas as pd
 from datetime import datetime
@@ -95,10 +94,8 @@ def view_orders():
         symbol_ccxt = f'{symbol[0:-4]}/USDT:USDT'
     elif symbol[-4:] == "USDC":
         symbol_ccxt = f'{symbol[0:-4]}/USDC:USDC'
-    exchange = Exchange(user.exchange, user)
-    market_type = "futures"
-    ohlcv = exchange.fetch_ohlcv(symbol_ccxt, market_type, timeframe="1h", limit=100)
-    ohlcv_df = pd.DataFrame(ohlcv, columns = ['timestamp', 'open', 'high', 'low', 'close', 'volume'])
+    ohlcv = db.fetch_ohlcv(user, symbol)
+    ohlcv_df = pd.DataFrame(ohlcv, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume', 'user', 'symbol'])
     ohlcv_df["color"] = np.where(ohlcv_df["close"] > ohlcv_df["open"], "green", "red")
     # w = (ohlcv_df["timestamp"][1] - ohlcv_df["timestamp"][0]) * 0.8
     time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -123,7 +120,6 @@ def view_orders():
     fig.update_layout(xaxis_rangeslider_visible=False, xaxis_tickformat='%H:%M')
     fig.update_xaxes(tickangle=-90, tickfont=dict(size=14), dtick='8')
     # fig.update_layout(xaxis_rangeslider_visible=False, width=1280, height=1024)
-    # balance = exchange.fetch_balance(market_type)
     prices = db.fetch_prices(user)
     price = 0
     for p in prices:
