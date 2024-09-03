@@ -98,7 +98,13 @@ def view_orders():
     ohlcv_df = pd.DataFrame(ohlcv, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume', 'user', 'symbol'])
     ohlcv_df["color"] = np.where(ohlcv_df["close"] > ohlcv_df["open"], "green", "red")
     # w = (ohlcv_df["timestamp"][1] - ohlcv_df["timestamp"][0]) * 0.8
-    time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    prices = db.fetch_prices(user)
+    price = 0
+    for p in prices:
+        if p[1] == symbol:
+            price = p[3]
+            timestamp = p[2]
+    time = datetime.fromtimestamp(timestamp / 1000).strftime('%Y-%m-%d %H:%M:%S')
     col1, col2, col3, col4 = st.columns([1, 1, 1, 0.2])
     with col1:
         st.markdown(f"#### :blue[User:] :green[{user.name}]")
@@ -120,11 +126,6 @@ def view_orders():
     fig.update_layout(xaxis_rangeslider_visible=False, xaxis_tickformat='%H:%M')
     fig.update_xaxes(tickangle=-90, tickfont=dict(size=14), dtick='8')
     # fig.update_layout(xaxis_rangeslider_visible=False, width=1280, height=1024)
-    prices = db.fetch_prices(user)
-    price = 0
-    for p in prices:
-        if p[1] == symbol:
-            price = p[3]
     orders = db.fetch_orders_by_symbol(user.name, symbol)
     color = "red" if price < ohlcv_df["open"].iloc[-1] else "green"
     # add price line to candlestick
