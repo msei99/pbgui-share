@@ -79,7 +79,7 @@ class Exchange:
 
     def connect(self):
         self.instance = getattr(ccxt, self.id) ()
-        self.instance.httpsProxy = 'http://161.97.97.155:3128/'
+        # self.instance.httpsProxy = 'https://122.200.19.100:80/'
         if self._user and self.user.key != 'key':
             self.instance.apiKey = self.user.key
             self.instance.secret = self.user.secret
