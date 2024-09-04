@@ -7,7 +7,7 @@ from Database import Database
 from User import Users
 import configparser
 
-class PBData():
+class PBGShare():
     def __init__(self):
         self.load_ini()
         self.db = Database()
@@ -38,7 +38,7 @@ class PBData():
 
 def main():
     print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Start: PBData')
-    pbdata = PBData()
+    pbdata = PBGShare()
     while True:
         try:
             pbdata.update_db()

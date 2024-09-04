@@ -1,19 +1,22 @@
-# 🎈 Blank app template
+# PBGui Dashboard Share
 
-A simple Streamlit app template for you to modify!
+## Contact/Support on Telegram: https://t.me/+kwyeyrmjQ-lkYTJk
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+v 0.9
 
-### How to run it on your own machine
+## Overview
+A tool to share a part of your PBGUi Dashboard in the streamlit Community Cloud
 
-1. Install the requirements
+## Installation
+```
+Go to https://manicpt.streamlit.app/ and fork my app
+Follow the streamlit documentation https://docs.streamlit.io/deploy/streamlit-community-cloud/get-started/fork-and-edit-a-public-app
+Clone your new fork to your local system using "git clone https://your_url.git"
+```
+## Running
+- Edit api-keys.json
+- Copy pbgui-share.ini.example to pbgui-share.ini and configure your github account
+```
+python PBGShare.py
 
-   ```
-   $ pip install -r requirements.txt
-   ```
-
-2. Run the app
-
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+```
