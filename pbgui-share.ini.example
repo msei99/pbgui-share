@@ -1,3 +1,6 @@
+[main]
+pbgdir = /path_to_pbgui
+
 [git]
 user = git_username
 url = github.com/git_username/pbgui-share

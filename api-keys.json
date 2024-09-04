@@ -1,79 +1,62 @@
 {
     "binance_CPT": {
         "exchange": "binance",
-        "key": "",
-        "secret": ""
+        "url": "https://www.binance.com/en/copy-trading/lead-details/3746904129636329728"
     },
     "bybit_CPT1": {
         "exchange": "bybit",
-        "key": "",
-        "secret": ""
+        "url": "https://i.bybit.com/28bMabOR?action=inviteToCopy"
     },
     "bybit_CPT2": {
         "exchange": "bybit",
-        "key": "",
-        "secret": ""
+        "url": "https://i.bybit.com/25alabs3?action=inviteToCopy"
     },
     "bybit_CPT3": {
         "exchange": "bybit",
-        "key": "",
-        "secret": ""
+        "url": "https://i.bybit.com/1Kgab32u?action=inviteToCopy"
     },
     "bybit_CPT4": {
         "exchange": "bybit",
-        "key": "",
-        "secret": ""
+        "url": "https://i.bybit.com/289mabh9?action=inviteToCopy"
     },
     "bybit_CPTDOGEONLY": {
         "exchange": "bybit",
-        "key": "",
-        "secret": ""
+        "url": "https://i.bybit.com/Ptabusy?action=inviteToCopy"
     },
     "bybit_CPTForagerHR": {
         "exchange": "bybit",
-        "key": "",
-        "secret": ""
+        "url": "https://i.bybit.com/ab21xc5H?action=inviteToCopy"
     },
     "bybit_CPTForagerMR": {
         "exchange": "bybit",
-        "key": "",
-        "secret": ""
+        "url": "https://i.bybit.com/oTlabPz?action=inviteToCopy"
     },
     "bybit_CPTPro": {
         "exchange": "bybit",
-        "key": "",
-        "secret": ""
+        "url": "https://i.bybit.com/1RVg8abA"
     },
     "hl_manicpt": {
         "exchange": "hyperliquid",
-        "wallet_address": "",
-        "private_key": "",
-        "is_vault": true
+        "url": "https://app.hyperliquid.xyz/vaults/0x9bb6e9a1e81b11f938da15126ce6320decc35262"
     },
     "manibybit08": {
         "exchange": "bybit",
-        "key": "",
-        "secret": ""
+        "url": "https://i.bybit.com/1YwTab6R?action=inviteToCopy"
     },
     "manibybit09": {
         "exchange": "bybit",
-        "key": "",
-        "secret": ""
+        "url": "https://i.bybit.com/1DabYP2V?action=inviteToCopy"
     },
     "manicpthighroller": {
         "exchange": "bybit",
-        "key": "",
-        "secret": ""
+        "url": "https://i.bybit.com/wSabu9P?action=inviteToCopy"
     },
     "okx_MAINCPT": {
         "exchange": "okx",
-        "key": "",
-        "secret": "",
-        "passphrase": ""
+        "url": "https://www.okx.com/de/copy-trading/account/818D80B303AF08B6/swap"
     },
     "tikverylowrisk": {
         "exchange": "bybit",
-        "key": "",
-        "secret": ""
+        "url": "https://i.bybit.com/abXfa03?action=inviteToCopy"
     }
 }

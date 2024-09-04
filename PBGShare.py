@@ -14,10 +14,10 @@ class PBGShare():
         self.users = Users()
 
     def update_db(self):
-        PBGUI_DB = Path(f'/home/mani/software/pbgui/data')
+        PBGUI_DB = Path(f'{self.pbgdir}/data/pbgui.db')
         for user in self.users:
             print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Update pbgui-share db {user.name}')
-            self.db.copy_user(f'{PBGUI_DB}/pbgui.db', user)
+            self.db.copy_user(f'{PBGUI_DB}', user)
             self.db.add_ohlcv(user)
 
     def update_git(self):
@@ -32,6 +32,7 @@ class PBGShare():
     def load_ini(self):
         pb_config = configparser.ConfigParser()
         pb_config.read('pbgui-share.ini')
+        self.pbgdir = pb_config.get("main", "pbgdir")
         self.git_user = pb_config.get("git", "user")
         self.git_url = pb_config.get("git", "url")
         self.git_token = pb_config.get("git", "token")

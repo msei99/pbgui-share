@@ -20,6 +20,7 @@ def set_page_config():
 
 def view():
     user = st.session_state.view
+    st.markdown(f'#### Copy Trading: [{user.name}](%s)' % user.url)
     view_positions(user)
     view_orders()
 
