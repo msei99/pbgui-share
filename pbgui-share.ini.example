@@ -1,0 +1,4 @@
+[git]
+user = git_username
+url = github.com/git_username/pbgui-share
+token = your_token
