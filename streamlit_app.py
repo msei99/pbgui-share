@@ -152,7 +152,7 @@ def view_orders():
     fig.data[0].showlegend = False
     fig.update_layout(yaxis=dict(title='USDT', title_font=dict(size=24)), xaxis_rangeslider_visible=False, height=800, xaxis_type='category')
     fig.update_layout(xaxis_rangeslider_visible=False, xaxis_tickformat='%H:%M')
-    fig.update_xaxes(tickangle=-90, tickfont=dict(size=14), dtick='8')
+    fig.update_xaxes(tickangle=-90, tickfont=dict(size=14), dtick='12')
     # fig.update_layout(xaxis_rangeslider_visible=False, width=1280, height=1024)
     orders = db.fetch_orders_by_symbol(user.name, symbol)
     color = "red" if price < ohlcv_df["open"].iloc[-1] else "green"
@@ -177,7 +177,9 @@ def view_orders():
                                 mode='lines',
                                 line=dict(color=color, width=2, dash = 'dot'), name=legend))
     fig.update_layout(legend = dict(font = dict(size = 14)))
-    st.plotly_chart(fig, key=f"dashboard_orders")
+    #legend position left
+    fig.update_layout(legend=dict(x=0, y=0))
+    st.plotly_chart(fig, key=f"dashboard_orders")   
 
 set_page_config()
 st.title("PBGui - Dashboard Share")
