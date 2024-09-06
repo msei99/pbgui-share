@@ -112,7 +112,7 @@ def view_orders():
     with col2:
         st.markdown(f"#### :blue[Symbol:] :green[{symbol}]")
     with col3:
-        st.markdown(f"#### :blue[Time:] :green[{time}]")
+        st.markdown(f"#### :blue[UTC:] :green[{time}]")
     with col4:
         if st.button(":material/refresh:", key=f"dashboard_orders_rerun"):
             st.rerun(scope="fragment")
