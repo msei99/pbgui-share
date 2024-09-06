@@ -4,6 +4,7 @@ from User import Users, User
 import pandas as pd
 from datetime import datetime
 import plotly.graph_objects as go
+import plotly.express as px
 import numpy as np
 
 def set_page_config():
@@ -21,12 +22,38 @@ def set_page_config():
 def view():
     user = st.session_state.view
     st.markdown(f'#### Copy Trading: [{user.name}](%s)' % user.url)
+    view_income(user)
     view_positions(user)
     view_orders()
 
 def color_upnl(value):
     color = "red" if value < 0 else "green"
     return f"color: {color};"
+
+@st.fragment
+def view_income(user : User):
+    users = st.session_state.users
+    db = st.session_state.db
+    st.markdown("#### :blue[Income]")
+    income = db.select_income_by_symbol(user)
+    df = pd.DataFrame(income, columns=['Date', 'Symbol', 'Income'])
+    df['Date'] = pd.to_datetime(df['Date'], unit='ms')
+    income = df[['Date', 'Symbol', 'Income']].copy()
+    income['Income'] = income['Income'].cumsum()
+    fig = px.line(income, x='Date', y='Income', hover_data={'Income':':.2f'})
+    # fig = px.line(income, x='Date', y='Income', hover_data={'Income':':.2f'}, title=f"From: {df['Date'].min()} To: {df['Date'].max()}")
+    fig.update_layout(height=800)
+    fig['data'][0]['showlegend'] = True
+    fig['data'][0]['name'] = 'Total Income'
+    # Sort df by Symbol
+    df = df.sort_values(by=['Symbol', 'Date'])
+    for symbol in df['Symbol'].unique():
+        symbol_df = df[df['Symbol'] == symbol].copy()
+        symbol_df['Income'] = symbol_df['Income'].cumsum()
+        fig.add_trace(go.Scatter(x=symbol_df['Date'], y=symbol_df['Income'], name=symbol))
+    fig.update_traces(visible="legendonly")
+    fig['data'][0].visible=True
+    st.plotly_chart(fig, key=f"dashboard_income_plot")
 
 @st.fragment
 def view_positions(user : User):
