@@ -35,6 +35,10 @@
         "exchange": "bybit",
         "url": "https://i.bybit.com/1RVg8abA"
     },
+    "bybit_SOLANA": {
+        "exchange": "bybit",
+        "url": "https://i.bybit.com/1qabmY01?action=inviteToCopy"
+    },
     "hl_manicpt": {
         "exchange": "hyperliquid",
         "url": "https://app.hyperliquid.xyz/vaults/0x9bb6e9a1e81b11f938da15126ce6320decc35262"
