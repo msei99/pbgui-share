@@ -36,7 +36,7 @@ class PBGShare():
         self.git_user = pb_config.get("git", "user")
         self.git_url = pb_config.get("git", "url")
         self.git_token = pb_config.get("git", "token")
-
+    
 def main():
     print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Start: PBData')
     pbdata = PBGShare()

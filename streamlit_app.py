@@ -22,7 +22,9 @@ def set_page_config():
 def view():
     user = st.session_state.view
     st.markdown(f'#### Copy Trading: [{user.name}](%s)' % user.url)
+    view_pnl(user)
     view_income(user)
+    view_top_symbols(user)
     view_positions(user)
     view_orders()
 
@@ -31,8 +33,29 @@ def color_upnl(value):
     return f"color: {color};"
 
 @st.fragment
+def view_top_symbols(user : User):
+    db = st.session_state.db
+    st.markdown("#### :blue[Top Symbols]")
+    top = db.select_top(user)
+    df = pd.DataFrame(top, columns =['Date', 'Symbol', 'Income'])
+    # st.write(df)
+    fig = px.bar(df, x="Symbol", y="Income")
+    fig.update_traces(marker_color=['red' if val < 0 else 'green' for val in df['Income']])
+    st.plotly_chart(fig, key=f"dashboard_top_symbols_plot")
+
+@st.fragment
+def view_pnl(user : User):
+    db = st.session_state.db
+    st.markdown("#### :blue[Daily PNL]")
+    pnl = db.select_pnl(user)
+    df = pd.DataFrame(pnl, columns =['Date', 'Income'])
+    fig = px.bar(df, x='Date', y='Income', text='Income', hover_data={'Income':':.2f'})
+    fig.update_traces(texttemplate='%{text:.2f}', textposition='auto')
+    fig.update_traces(marker_color=['red' if val < 0 else 'green' for val in df['Income']])
+    st.plotly_chart(fig, key=f"dashboard_pnl_plot")
+
+@st.fragment
 def view_income(user : User):
-    users = st.session_state.users
     db = st.session_state.db
     st.markdown("#### :blue[Income]")
     income = db.select_income_by_symbol(user)
@@ -57,7 +80,6 @@ def view_income(user : User):
 
 @st.fragment
 def view_positions(user : User):
-    users = st.session_state.users
     db = st.session_state.db
     st.markdown("#### :blue[Positions]")
     # Init view_orders that it can be selected in edit mode
