@@ -9,7 +9,7 @@ import numpy as np
 
 def set_page_config():
     st.set_page_config(
-        page_title=f"PBGUI - Dashboard Share",
+        page_title=f"PBGui - Dashboard Share",
         page_icon=":bar_chart:",
         layout="wide",
         initial_sidebar_state="expanded",
