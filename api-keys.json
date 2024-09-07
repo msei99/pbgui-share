@@ -35,7 +35,7 @@
         "exchange": "bybit",
         "url": "https://i.bybit.com/1RVg8abA"
     },
-    "bybit_SOLANA": {
+    "bybit_SOLUSDT": {
         "exchange": "bybit",
         "url": "https://i.bybit.com/1qabmY01?action=inviteToCopy"
     },
