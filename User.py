@@ -84,6 +84,7 @@ class Users:
         except Exception as e:
             print(f'{self.api_path} is corrupted {e}')
             return
+        self.users = []
         for user in users:
             if "exchange" in users[user]:
                 my_user = User()

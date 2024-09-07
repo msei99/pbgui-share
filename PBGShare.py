@@ -21,7 +21,8 @@ class PBGShare():
             self.db.add_ohlcv(user)
 
     def update_git(self):
-        # git pull pbgui-share
+        cmd = ['git', 'add', 'api-keys.json']
+        subprocess.run(cmd, text=True)
         cmd = ['git', 'add', 'pbgui-share.db']
         subprocess.run(cmd, text=True)
         cmd = ['git', 'commit', '-m', f'Update pbgui-share.db {datetime.now().isoformat(sep=" ", timespec="seconds")}']
@@ -45,6 +46,7 @@ def main():
             pbdata.update_db()
             pbdata.update_git()
             sleep(300)
+            pbdata.users.load()
         except Exception as e:
             print(f'Something went wrong, but continue {e}')
             traceback.print_exc()
