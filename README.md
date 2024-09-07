@@ -5,7 +5,7 @@
 v 0.95
 
 ## Overview
-A tool to share a part of your PBGUi Dashboard in the streamlit Community Cloud
+A tool to share a part of your [PBGui](https://github.com/msei99/pbgui) Dashboard in the streamlit Community Cloud
 
 ## Installation
 Go to https://manicpt.streamlit.app/ and fork my app
