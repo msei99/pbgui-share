@@ -23,9 +23,6 @@ class PBGShare():
         pb_config = configparser.ConfigParser()
         pb_config.read('pbgui-share.ini')
         self.pbgdir = pb_config.get("main", "pbgdir")
-        self.git_user = pb_config.get("git", "user")
-        self.git_url = pb_config.get("git", "url")
-        self.git_token = pb_config.get("git", "token")
     
 def main():
     print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Start: PBData')
@@ -33,6 +30,7 @@ def main():
     while True:
         try:
             pbdata.update_db()
+            print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Sleep for 5 minutes')
             sleep(300)
             pbdata.users.load()
         except Exception as e:
