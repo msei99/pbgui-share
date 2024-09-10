@@ -101,8 +101,8 @@ def view_positions(user : User):
         for index, order in orders.iterrows():
             if order.iloc[5] == "buy":
                 dca += 1
-                if next_dca < order[4]:
-                    next_dca = order[4]
+                if next_dca < order.iloc[4]:
+                    next_dca = order.iloc[4]
             elif order.iloc[5] == "sell":
                 if next_tp == 0 or next_tp > order.iloc[4]:
                     next_tp = order.iloc[4]
@@ -118,7 +118,7 @@ def view_positions(user : User):
     df = df.sort_values(by=['User', 'Symbol'])
     # Move User to second column
     df = df[['Id', 'User', 'Symbol', 'PosId', 'Size', 'uPnl', 'Entry', 'Price', 'DCA', 'Next DCA', 'Next TP']]
-    sdf = df.style.format({'Size': "{:.3f}"}).applymap(color_upnl, subset=['uPnl'])
+    sdf = df.style.applymap(color_upnl, subset=['uPnl']).format({'Size': "{:.3f}"})
     st.session_state[f'dashboard_positions_sdf'] = df
     column_config = {
         "Id": None,
