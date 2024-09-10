@@ -3,6 +3,5 @@ ccxt
 pandas
 numpy
 plotly
-pysqlcipher3
 SQLAlchemy==1.4
 mysqlclient
