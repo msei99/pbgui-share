@@ -1,5 +1,4 @@
-import subprocess
-from pathlib import Path, PurePath
+from pathlib import Path
 from time import sleep
 from datetime import datetime
 import traceback
@@ -16,18 +15,9 @@ class PBGShare():
     def update_db(self):
         PBGUI_DB = Path(f'{self.pbgdir}/data/pbgui.db')
         for user in self.users:
-            if user.name == "hl_manicpt":
-                print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Update pbgui-share db {user.name}')
-                self.db.copy_user_mysql(f'{PBGUI_DB}', user)
-                self.db.add_ohlcv(user)
-
-    def update_git(self):
-        cmd = ['git', 'add', 'api-keys.json']
-        subprocess.run(cmd, text=True)
-        cmd = ['git', 'commit', '-m', f'Update pbgui-share.db {datetime.now().isoformat(sep=" ", timespec="seconds")}']
-        subprocess.run(cmd, text=True)
-        cmd = ['git', 'push', f'https://{self.git_user}:{self.git_token}@{self.git_url}']
-        subprocess.run(cmd, text=True)
+            print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Update pbgui-share db {user.name}')
+            self.db.copy_user_mysql(f'{PBGUI_DB}', user)
+            self.db.add_ohlcv(user)
 
     def load_ini(self):
         pb_config = configparser.ConfigParser()
@@ -43,7 +33,6 @@ def main():
     while True:
         try:
             pbdata.update_db()
-            # pbdata.update_git()
             sleep(300)
             pbdata.users.load()
         except Exception as e:

@@ -5,17 +5,21 @@ import sqlite3
 import pandas as pd
 import streamlit as st
 from sqlalchemy import text
+import logging
 
 class Database():
     def __init__(self):
+        logging.getLogger("streamlit.runtime.caching.cache_data_api").disabled=True
+        logging.getLogger("streamlit.runtime.scriptrunner_utils.script_run_context").disabled=True
         self.db_user = st.secrets["db_user"]
         self.db_password = st.secrets["db_password"]
         self.db_host = st.secrets["db_host"]
         self.db_port = st.secrets["db_port"]
+        self.db_name = st.secrets["db_name"]
         self.conn = st.connection(
             "pbguishare",
             "sql",
-            url = f"mysql://{self.db_user}:{self.db_password}@{self.db_host}:{self.db_port}/pbguishare",
+            url = f"mysql://{self.db_user}:{self.db_password}@{self.db_host}:{self.db_port}/{self.db_name}",
         )
         self.create_tables()
 
@@ -171,42 +175,40 @@ class Database():
             history_ids.append(hist[0])
         try:
             with self.conn.session as session:
-                for position in positions:
-                    session.execute(text("INSERT IGNORE INTO position VALUES (:id, :symbol, :timestamp, :psize, :upnl, :entry, :user);")
-                                    ,params=dict(id=position[0], symbol=position[1], timestamp=position[2], psize=position[3], upnl=position[4], entry=position[5], user=position[6]))
+                # for position in positions:
+                #     session.execute(text("INSERT IGNORE INTO position VALUES (:id, :symbol, :timestamp, :psize, :upnl, :entry, :user);")
+                #                     ,params=dict(id=position[0], symbol=position[1], timestamp=position[2], psize=position[3], upnl=position[4], entry=position[5], user=position[6]))
+                position_params = [dict(id=p[0], symbol=p[1], timestamp=p[2], psize=p[3], upnl=p[4], entry=p[5], user=p[6]) for p in positions]
+                session.execute(text("INSERT IGNORE INTO position (id, symbol, timestamp, psize, upnl, entry, user) VALUES (:id, :symbol, :timestamp, :psize, :upnl, :entry, :user);")
+                                ,params=position_params)
+                session.commit()
                 positions = self.conn.query('select * from position where user = :user',
                                         ttl=0,
                                         params=dict(user=user.name))
                 for index, position in positions.iterrows():
                     if position[0] not in position_ids:
                         session.execute(text(f"DELETE FROM position WHERE id = {position[0]}"))
-                for order in orders:
-                    session.execute(text("INSERT IGNORE INTO orders VALUES (:id, :symbol, :timestamp, :amount, :price, :side, :uniqueid, :user);")
-                                    ,params=dict(id=order[0], symbol=order[1], timestamp=order[2], amount=order[3], price=order[4], side=order[5], uniqueid=order[6], user=order[7]))
+                order_params = [dict(id=o[0], symbol=o[1], timestamp=o[2], amount=o[3], price=o[4], side=o[5], uniqueid=o[6], user=o[7]) for o in orders]
+                session.execute(text("INSERT IGNORE INTO orders VALUES (:id, :symbol, :timestamp, :amount, :price, :side, :uniqueid, :user);")
+                                ,params=order_params)
                 orders = self.conn.query('select * from orders where user = :user',
                                         ttl=0,
                                         params=dict(user=user.name))
                 for index, order in orders.iterrows():
                     if order[0] not in orders_ids:
                         session.execute(text(f"DELETE FROM orders WHERE id = {order[0]}"))
-                for price in prices:
-                    session.execute(text("INSERT IGNORE INTO prices VALUES (:id, :symbol, :timestamp, :price, :user);")
-                                    ,params=dict(id=price[0], symbol=price[1], timestamp=price[2], price=price[3], user=price[4]))
+                price_params = [dict(id=p[0], symbol=p[1], timestamp=p[2], price=p[3], user=p[4]) for p in prices]
+                session.execute(text("INSERT IGNORE INTO prices VALUES (:id, :symbol, :timestamp, :price, :user);")
+                                ,params=price_params)
                 prices = self.conn.query('select * from prices where user = :user',
                                         ttl=0,
                                         params=dict(user=user.name))
                 for index, price in prices.iterrows():
                     if price[0] not in prices_ids:
                         session.execute(text(f"DELETE FROM prices WHERE id = {price[0]}"))
-                for hist in history:
-                    session.execute(text("INSERT IGNORE INTO history VALUES (:id, :symbol, :timestamp, :income, :uniqueid, :user);")
-                                    ,params=dict(id=hist[0], symbol=hist[1], timestamp=hist[2], income=hist[3], uniqueid=hist[4], user=hist[5]))
-                # history = self.conn.query('select * from history where user = :user',
-                #                         ttl=0,
-                #                         params=dict(user=user.name))
-                # for index, hist in history.iterrows():
-                #     if hist[0] not in history_ids:
-                #         session.execute(f"DELETE FROM history WHERE id = {hist[0]}")
+                history_params = [dict(id=hist[0], symbol=hist[1], timestamp=hist[2], income=hist[3], uniqueid=hist[4], user=hist[5]) for hist in history]
+                session.execute(text("INSERT IGNORE INTO history VALUES (:id, :symbol, :timestamp, :income, :uniqueid, :user);")
+                                ,params=history_params)
                 session.commit()
         except Exception as e:
             print(e)
@@ -241,13 +243,6 @@ class Database():
 
 def main():
     print("Don't Run this Class from CLI")
-    PBGUI_DB = Path(f'../pbgui/data/pbgui.db')
-    db = Database()
-    users = Users()
-    user = users.find_user("hl_manicpt")
-    print(db.find_last_timestamp(user))
-    db.add_ohlcv(user)
-    db.copy_user_mysql(f'{PBGUI_DB}', user)
 
 if __name__ == '__main__':
     main()
