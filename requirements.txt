@@ -3,5 +3,5 @@ ccxt
 pandas
 numpy
 plotly
-SQLAlchemy==1.4
+SQLAlchemy==2.0.27
 mysqlclient

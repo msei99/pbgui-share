@@ -4,6 +4,7 @@ from Exchange import Exchange
 import sqlite3
 import pandas as pd
 import streamlit as st
+from sqlalchemy import text
 
 class Database():
     def __init__(self):
@@ -99,7 +100,7 @@ class Database():
                     upnl FLOAT NOT NULL,
                     entry FLOAT NOT NULL,
                     user VARCHAR(32) NOT NULL);"""
-                session.execute(sql)
+                session.execute(text(sql))
                 sql = """CREATE TABLE IF NOT EXISTS orders (
                     id INT PRIMARY KEY AUTO_INCREMENT,
                     symbol VARCHAR(32) NOT NULL,
@@ -109,14 +110,14 @@ class Database():
                     side VARCHAR(4) NOT NULL,
                     uniqueid VARCHAR(64) NOT NULL UNIQUE,
                     user VARCHAR(32) NOT NULL);"""
-                session.execute(sql)
+                session.execute(text(sql))
                 sql = """CREATE TABLE IF NOT EXISTS prices (
                     id INT PRIMARY KEY AUTO_INCREMENT,
                     symbol VARCHAR(32) NOT NULL,
                     timestamp BIGINT NOT NULL,
                     price FLOAT NOT NULL,
                     user VARCHAR(32) NOT NULL);"""
-                session.execute(sql)
+                session.execute(text(sql))
                 sql = """CREATE TABLE IF NOT EXISTS history (
                     id INT PRIMARY KEY AUTO_INCREMENT,
                     symbol VARCHAR(32) NOT NULL,
@@ -124,7 +125,7 @@ class Database():
                     income FLOAT NOT NULL,
                     uniqueid VARCHAR(64) NOT NULL UNIQUE,
                     user VARCHAR(32) NOT NULL);"""
-                session.execute(sql)
+                session.execute(text(sql))
                 sql = """CREATE TABLE IF NOT EXISTS ohlcv (
                     timestamp BIGINT NOT NULL,
                     open FLOAT NOT NULL,
@@ -134,7 +135,7 @@ class Database():
                     volume FLOAT NOT NULL,
                     user VARCHAR(32) NOT NULL,
                     symbol VARCHAR(32) NOT NULL);"""
-                session.execute(sql)
+                session.execute(text(sql))
             session.commit()
         except Exception as e:
             print(e)
@@ -171,34 +172,34 @@ class Database():
         try:
             with self.conn.session as session:
                 for position in positions:
-                    session.execute("INSERT IGNORE INTO position VALUES (:id, :symbol, :timestamp, :psize, :upnl, :entry, :user);"
+                    session.execute(text("INSERT IGNORE INTO position VALUES (:id, :symbol, :timestamp, :psize, :upnl, :entry, :user);")
                                     ,params=dict(id=position[0], symbol=position[1], timestamp=position[2], psize=position[3], upnl=position[4], entry=position[5], user=position[6]))
                 positions = self.conn.query('select * from position where user = :user',
                                         ttl=0,
                                         params=dict(user=user.name))
                 for index, position in positions.iterrows():
                     if position[0] not in position_ids:
-                        session.execute(f"DELETE FROM position WHERE id = {position[0]}")
+                        session.execute(text(f"DELETE FROM position WHERE id = {position[0]}"))
                 for order in orders:
-                    session.execute("INSERT IGNORE INTO orders VALUES (:id, :symbol, :timestamp, :amount, :price, :side, :uniqueid, :user);"
+                    session.execute(text("INSERT IGNORE INTO orders VALUES (:id, :symbol, :timestamp, :amount, :price, :side, :uniqueid, :user);")
                                     ,params=dict(id=order[0], symbol=order[1], timestamp=order[2], amount=order[3], price=order[4], side=order[5], uniqueid=order[6], user=order[7]))
                 orders = self.conn.query('select * from orders where user = :user',
                                         ttl=0,
                                         params=dict(user=user.name))
                 for index, order in orders.iterrows():
                     if order[0] not in orders_ids:
-                        session.execute(f"DELETE FROM orders WHERE id = {order[0]}")
+                        session.execute(text(f"DELETE FROM orders WHERE id = {order[0]}"))
                 for price in prices:
-                    session.execute("INSERT IGNORE INTO prices VALUES (:id, :symbol, :timestamp, :price, :user);"
+                    session.execute(text("INSERT IGNORE INTO prices VALUES (:id, :symbol, :timestamp, :price, :user);")
                                     ,params=dict(id=price[0], symbol=price[1], timestamp=price[2], price=price[3], user=price[4]))
                 prices = self.conn.query('select * from prices where user = :user',
                                         ttl=0,
                                         params=dict(user=user.name))
                 for index, price in prices.iterrows():
                     if price[0] not in prices_ids:
-                        session.execute(f"DELETE FROM prices WHERE id = {price[0]}")
+                        session.execute(text(f"DELETE FROM prices WHERE id = {price[0]}"))
                 for hist in history:
-                    session.execute("INSERT IGNORE INTO history VALUES (:id, :symbol, :timestamp, :income, :uniqueid, :user);"
+                    session.execute(text("INSERT IGNORE INTO history VALUES (:id, :symbol, :timestamp, :income, :uniqueid, :user);")
                                     ,params=dict(id=hist[0], symbol=hist[1], timestamp=hist[2], income=hist[3], uniqueid=hist[4], user=hist[5]))
                 # history = self.conn.query('select * from history where user = :user',
                 #                         ttl=0,
@@ -230,10 +231,10 @@ class Database():
                 ohlcv_df['user'] = user.name
                 ohlcv_df['symbol'] = symbol
                 with self.conn.session as session:
-                    session.execute("DELETE FROM ohlcv WHERE user = :user AND symbol = :symbol",
-                                    params=dict(user=user.name, symbol=symbol))
-                    session.execute("INSERT INTO ohlcv (timestamp, open, high, low, close, volume, user, symbol) VALUES (:timestamp, :open, :high, :low, :close, :volume, :user, :symbol);",
-                                    ohlcv_df.to_dict(orient='records'))
+                    session.execute(text("DELETE FROM ohlcv WHERE user = :user AND symbol = :symbol")
+                                    ,params=dict(user=user.name, symbol=symbol))
+                    session.execute(text("INSERT INTO ohlcv (timestamp, open, high, low, close, volume, user, symbol) VALUES (:timestamp, :open, :high, :low, :close, :volume, :user, :symbol);")
+                                    ,ohlcv_df.to_dict(orient='records'))
                     session.commit()
         except Exception as e:
             print(e)
