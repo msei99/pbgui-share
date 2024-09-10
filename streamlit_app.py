@@ -92,33 +92,33 @@ def view_positions(user : User):
     positions = db.fetch_positions(user)
     prices = db.fetch_prices(user)
     for index, pos in positions.iterrows():
-        symbol = pos[1]
-        user = pos[6]
+        symbol = pos.iloc[1]
+        user = pos.iloc[6]
         orders = db.fetch_orders_by_symbol(user, symbol)
         dca = 0
         next_tp = 0
         next_dca = 0
         for index, order in orders.iterrows():
-            if order[5] == "buy":
+            if order.iloc[5] == "buy":
                 dca += 1
                 if next_dca < order[4]:
                     next_dca = order[4]
-            elif order[5] == "sell":
-                if next_tp == 0 or next_tp > order[4]:
-                    next_tp = order[4]
+            elif order.iloc[5] == "sell":
+                if next_tp == 0 or next_tp > order.iloc[4]:
+                    next_tp = order.iloc[4]
         # Find price from prices
         price = 0
         if not prices.empty:
             for index, p in prices.iterrows():
-                if p[1] == symbol:
-                    price = p[3]
+                if p.iloc[1] == symbol:
+                    price = p.iloc[3]
         all_positions.append(tuple(pos) + (price,) + (dca,) + (next_dca,) + (next_tp,))
     df = pd.DataFrame(all_positions, columns =['Id', 'Symbol', 'PosId', 'Size', 'uPnl', 'Entry', 'User', 'Price', 'DCA', 'Next DCA', 'Next TP'])
     # sorty df by User, Symbol
     df = df.sort_values(by=['User', 'Symbol'])
     # Move User to second column
     df = df[['Id', 'User', 'Symbol', 'PosId', 'Size', 'uPnl', 'Entry', 'Price', 'DCA', 'Next DCA', 'Next TP']]
-    sdf = df.style.applymap(color_upnl, subset=['uPnl']).format({'Size': "{:.3f}"})
+    sdf = df.style.format({'Size': "{:.3f}"}).applymap(color_upnl, subset=['uPnl'])
     st.session_state[f'dashboard_positions_sdf'] = df
     column_config = {
         "Id": None,
