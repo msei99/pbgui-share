@@ -4,7 +4,6 @@ from Exchange import Exchange
 import sqlite3
 import pandas as pd
 import streamlit as st
-from pysqlcipher3 import dbapi2 as sqlite3enc
 
 class Database():
     def __init__(self):
@@ -59,25 +58,6 @@ class Database():
                                         ttl=0,
                                         params=dict(user=user.name, start=start, end=end))
         return pnl
-    
-    def select_income(self, user: User):
-        start = self.find_first_timestamp(user)
-        end = self.find_last_timestamp(user)
-        sql = '''SELECT "timestamp", "income" FROM "history"
-                WHERE "history"."user" IN ({})
-                    AND "history"."timestamp" >= ?
-                    AND "history"."timestamp" <= ?
-                ORDER BY "timestamp" ASC'''.format(','.join('?'*len(user)))
-        sql_parameters = tuple(user) + (start, end)
-        try:
-            with sqlite3enc.connect(self.db) as conn:
-                cur = conn.cursor()
-                cur.execute(f"PRAGMA key = {self.key}")
-                cur.execute(sql, sql_parameters)
-                rows = cur.fetchall()
-                return rows
-        except sqlite3enc.Error as e:
-            print(e)
     
     # select income grouped by symbol not sum
     def select_income_by_symbol(self, user: User):
