@@ -1,5 +1,5 @@
 import streamlit as st
-from Database import Database
+from MySQLDatabase import Database
 from User import Users, User
 import pandas as pd
 from datetime import datetime
@@ -37,7 +37,7 @@ def view_top_symbols(user : User):
     db = st.session_state.db
     st.markdown("#### :blue[Top Symbols]")
     top = db.select_top(user)
-    df = pd.DataFrame(top, columns =['Date', 'Symbol', 'Income'])
+    df = pd.DataFrame(top, columns =['Symbol', 'Income'])
     # st.write(df)
     fig = px.bar(df, x="Symbol", y="Income")
     fig.update_traces(marker_color=['red' if val < 0 else 'green' for val in df['Income']])
@@ -91,15 +91,14 @@ def view_positions(user : User):
     all_positions = []
     positions = db.fetch_positions(user)
     prices = db.fetch_prices(user)
-    for pos in positions:
+    for index, pos in positions.iterrows():
         symbol = pos[1]
         user = pos[6]
         orders = db.fetch_orders_by_symbol(user, symbol)
         dca = 0
         next_tp = 0
         next_dca = 0
-        for order in orders:
-            # print(order)
+        for index, order in orders.iterrows():
             if order[5] == "buy":
                 dca += 1
                 if next_dca < order[4]:
@@ -109,8 +108,8 @@ def view_positions(user : User):
                     next_tp = order[4]
         # Find price from prices
         price = 0
-        if prices:
-            for p in prices:
+        if not prices.empty:
+            for index, p in prices.iterrows():
                 if p[1] == symbol:
                     price = p[3]
         all_positions.append(tuple(pos) + (price,) + (dca,) + (next_dca,) + (next_tp,))
@@ -147,10 +146,9 @@ def view_orders():
     ohlcv = db.fetch_ohlcv(user, symbol)
     ohlcv_df = pd.DataFrame(ohlcv, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume', 'user', 'symbol'])
     ohlcv_df["color"] = np.where(ohlcv_df["close"] > ohlcv_df["open"], "green", "red")
-    # w = (ohlcv_df["timestamp"][1] - ohlcv_df["timestamp"][0]) * 0.8
     prices = db.fetch_prices(user)
     price = 0
-    for p in prices:
+    for index, p in prices.iterrows():
         if p[1] == symbol:
             price = p[3]
             timestamp = p[2]
@@ -190,8 +188,9 @@ def view_orders():
     amount = 3
     price = 4
     side = 5
-    orders = sorted(orders, key=lambda x: x[price], reverse=True)
-    for order in orders:
+    # Sort orders df by price
+    orders = orders.sort_values(by=['price'])
+    for index, order in orders.iterrows():
         color = "red" if order[side] == "sell" else "green"
         legend = f'close: {str(order[price])} amount: {str(order[amount])}' if order[side] == "sell" else f'open: {str(order[price])} amount: {str(order[amount])}'
         fig.add_trace(go.Scatter(x=pd.to_datetime(ohlcv_df["timestamp"], unit='ms'),

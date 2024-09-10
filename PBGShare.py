@@ -3,7 +3,7 @@ from pathlib import Path, PurePath
 from time import sleep
 from datetime import datetime
 import traceback
-from Database import Database
+from MySQLDatabase import Database
 from User import Users
 import configparser
 
@@ -16,14 +16,13 @@ class PBGShare():
     def update_db(self):
         PBGUI_DB = Path(f'{self.pbgdir}/data/pbgui.db')
         for user in self.users:
-            print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Update pbgui-share db {user.name}')
-            self.db.copy_user(f'{PBGUI_DB}', user)
-            self.db.add_ohlcv(user)
+            if user.name == "hl_manicpt":
+                print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Update pbgui-share db {user.name}')
+                self.db.copy_user_mysql(f'{PBGUI_DB}', user)
+                self.db.add_ohlcv(user)
 
     def update_git(self):
         cmd = ['git', 'add', 'api-keys.json']
-        subprocess.run(cmd, text=True)
-        cmd = ['git', 'add', 'pbgui-share.db']
         subprocess.run(cmd, text=True)
         cmd = ['git', 'commit', '-m', f'Update pbgui-share.db {datetime.now().isoformat(sep=" ", timespec="seconds")}']
         subprocess.run(cmd, text=True)
@@ -44,7 +43,7 @@ def main():
     while True:
         try:
             pbdata.update_db()
-            pbdata.update_git()
+            # pbdata.update_git()
             sleep(300)
             pbdata.users.load()
         except Exception as e:
