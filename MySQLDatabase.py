@@ -200,12 +200,12 @@ class Database():
                 for hist in history:
                     session.execute("INSERT IGNORE INTO history VALUES (:id, :symbol, :timestamp, :income, :uniqueid, :user);"
                                     ,params=dict(id=hist[0], symbol=hist[1], timestamp=hist[2], income=hist[3], uniqueid=hist[4], user=hist[5]))
-                history = self.conn.query('select * from history where user = :user',
-                                        ttl=0,
-                                        params=dict(user=user.name))
-                for index, hist in history.iterrows():
-                    if hist[0] not in history_ids:
-                        session.execute(f"DELETE FROM history WHERE id = {hist[0]}")
+                # history = self.conn.query('select * from history where user = :user',
+                #                         ttl=0,
+                #                         params=dict(user=user.name))
+                # for index, hist in history.iterrows():
+                #     if hist[0] not in history_ids:
+                #         session.execute(f"DELETE FROM history WHERE id = {hist[0]}")
                 session.commit()
         except Exception as e:
             print(e)
