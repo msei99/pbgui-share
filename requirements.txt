@@ -4,4 +4,4 @@ pandas
 numpy
 plotly
 pysqlcipher3
-sqlalchemy
+SQLAlchemy==1.4
