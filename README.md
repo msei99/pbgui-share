@@ -18,7 +18,7 @@ Clone your new fork to your local system using "git clone https://your_url.git"
 - Copy pbgui-share.ini.example to pbgui-share.ini
 - Edit pbgui-share.ini and configure yout path to pbgui
 - Copy .streamlit/secrets.toml.example to .streamlit/secrets.toml
-- Edit .streamlit/secrets.toml and configure your database connection ()
+- Edit .streamlit/secrets.toml and configure your database connection
 - In your App in the Community Cloud go to Settings/Secrets and copy/paste the same settings as you configured in secrets.toml
 
 ## Running

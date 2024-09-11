@@ -15,7 +15,7 @@ def set_page_config():
         initial_sidebar_state="expanded",
         menu_items={
             'Get help': 'https://github.com/msei99/pbgui-share/#readme',
-            'About': "PBGui Dashboard Share v0.95"
+            'About': "PBGui Dashboard Share v0.97"
         }
     )
 
