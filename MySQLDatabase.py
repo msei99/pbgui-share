@@ -175,9 +175,6 @@ class Database():
             history_ids.append(hist[0])
         try:
             with self.conn.session as session:
-                # for position in positions:
-                #     session.execute(text("INSERT IGNORE INTO position VALUES (:id, :symbol, :timestamp, :psize, :upnl, :entry, :user);")
-                #                     ,params=dict(id=position[0], symbol=position[1], timestamp=position[2], psize=position[3], upnl=position[4], entry=position[5], user=position[6]))
                 position_params = [dict(id=p[0], symbol=p[1], timestamp=p[2], psize=p[3], upnl=p[4], entry=p[5], user=p[6]) for p in positions]
                 session.execute(text("INSERT IGNORE INTO position (id, symbol, timestamp, psize, upnl, entry, user) VALUES (:id, :symbol, :timestamp, :psize, :upnl, :entry, :user);")
                                 ,params=position_params)
