@@ -195,7 +195,7 @@ class Database():
                     if order[0] not in orders_ids:
                         session.execute(text(f"DELETE FROM orders WHERE id = {order[0]}"))
                 price_params = [dict(id=p[0], symbol=p[1], timestamp=p[2], price=p[3], user=p[4]) for p in prices]
-                session.execute(text("INSERT IGNORE INTO prices VALUES (:id, :symbol, :timestamp, :price, :user);")
+                session.execute(text("REPLACE INTO prices VALUES (:id, :symbol, :timestamp, :price, :user);")
                                 ,params=price_params)
                 prices = self.conn.query('select * from prices where user = :user',
                                         ttl=0,
