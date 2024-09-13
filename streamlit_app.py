@@ -149,9 +149,9 @@ def view_orders():
     prices = db.fetch_prices(user)
     price = 0
     for index, p in prices.iterrows():
-        if p[1] == symbol:
-            price = p[3]
-            timestamp = p[2]
+        if p.iloc[1] == symbol:
+            price = p.iloc[3]
+            timestamp = p.iloc[2]
     time = datetime.fromtimestamp(timestamp / 1000).strftime('%Y-%m-%d %H:%M:%S')
     col1, col2, col3, col4 = st.columns([1, 1, 1, 0.2])
     with col1:
@@ -175,7 +175,6 @@ def view_orders():
     fig.update_xaxes(tickangle=-90, tickfont=dict(size=14), dtick='12')
     # fig.update_layout(xaxis_rangeslider_visible=False, width=1280, height=1024)
     orders = db.fetch_orders_by_symbol(user.name, symbol)
-    orders = orders.sort_values(by=['price'])
     color = "red" if price < ohlcv_df["open"].iloc[-1] else "green"
     # add price line to candlestick
     fig.add_trace(go.Scatter(x=pd.to_datetime(ohlcv_df["timestamp"], unit='ms'), y=[price] * len(ohlcv_df), mode='lines', line=dict(color=color, width=1), name=f'price: {str(round(price,5))}'))
@@ -190,12 +189,12 @@ def view_orders():
     price = 4
     side = 5
     # Sort orders df by price
-    orders = orders.sort_values(by=['price'])
-    for index, order in orders.iterrows():
-        color = "red" if order[side] == "sell" else "green"
-        legend = f'close: {str(order[price])} amount: {str(order[amount])}' if order[side] == "sell" else f'open: {str(order[price])} amount: {str(order[amount])}'
+    orders_sorted = orders.sort_values(by=['price'], ascending=False).copy()
+    for index, order in orders_sorted.iterrows():
+        color = "red" if order.iloc[side] == "sell" else "green"
+        legend = f'close: {str(order.iloc[price])} amount: {str(order.iloc[amount])}' if order.iloc[side] == "sell" else f'open: {str(order.iloc[price])} amount: {str(order.iloc[amount])}'
         fig.add_trace(go.Scatter(x=pd.to_datetime(ohlcv_df["timestamp"], unit='ms'),
-                                y=[order[price]] * len(ohlcv_df),
+                                y=[order.iloc[price]] * len(ohlcv_df),
                                 mode='lines',
                                 line=dict(color=color, width=2, dash = 'dot'), name=legend))
     fig.update_layout(legend = dict(font = dict(size = 14)))
