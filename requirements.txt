@@ -2,6 +2,6 @@ streamlit
 ccxt
 pandas
 numpy
-plotly
+plotly==5.20.0
 SQLAlchemy==2.0.27
 mysqlclient

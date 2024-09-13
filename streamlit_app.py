@@ -118,7 +118,7 @@ def view_positions(user : User):
     df = df.sort_values(by=['User', 'Symbol'])
     # Move User to second column
     df = df[['Id', 'User', 'Symbol', 'PosId', 'Size', 'uPnl', 'Entry', 'Price', 'DCA', 'Next DCA', 'Next TP']]
-    sdf = df.style.applymap(color_upnl, subset=['uPnl']).format({'Size': "{:.3f}"})
+    sdf = df.style.map(color_upnl, subset=['uPnl']).format({'Size': "{:.3f}"})
     st.session_state[f'dashboard_positions_sdf'] = df
     column_config = {
         "Id": None,
@@ -175,6 +175,7 @@ def view_orders():
     fig.update_xaxes(tickangle=-90, tickfont=dict(size=14), dtick='12')
     # fig.update_layout(xaxis_rangeslider_visible=False, width=1280, height=1024)
     orders = db.fetch_orders_by_symbol(user.name, symbol)
+    orders = orders.sort_values(by=['price'])
     color = "red" if price < ohlcv_df["open"].iloc[-1] else "green"
     # add price line to candlestick
     fig.add_trace(go.Scatter(x=pd.to_datetime(ohlcv_df["timestamp"], unit='ms'), y=[price] * len(ohlcv_df), mode='lines', line=dict(color=color, width=1), name=f'price: {str(round(price,5))}'))
