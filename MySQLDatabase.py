@@ -176,7 +176,7 @@ class Database():
         try:
             with self.conn.session as session:
                 position_params = [dict(id=p[0], symbol=p[1], timestamp=p[2], psize=p[3], upnl=p[4], entry=p[5], user=p[6]) for p in positions]
-                session.execute(text("INSERT IGNORE INTO position (id, symbol, timestamp, psize, upnl, entry, user) VALUES (:id, :symbol, :timestamp, :psize, :upnl, :entry, :user);")
+                session.execute(text("REPLACE INTO position (id, symbol, timestamp, psize, upnl, entry, user) VALUES (:id, :symbol, :timestamp, :psize, :upnl, :entry, :user);")
                                 ,params=position_params)
                 session.commit()
                 positions = self.conn.query('select * from position where user = :user',
@@ -186,7 +186,7 @@ class Database():
                     if position[0] not in position_ids:
                         session.execute(text(f"DELETE FROM position WHERE id = {position[0]}"))
                 order_params = [dict(id=o[0], symbol=o[1], timestamp=o[2], amount=o[3], price=o[4], side=o[5], uniqueid=o[6], user=o[7]) for o in orders]
-                session.execute(text("INSERT IGNORE INTO orders VALUES (:id, :symbol, :timestamp, :amount, :price, :side, :uniqueid, :user);")
+                session.execute(text("REPLACE INTO orders VALUES (:id, :symbol, :timestamp, :amount, :price, :side, :uniqueid, :user);")
                                 ,params=order_params)
                 orders = self.conn.query('select * from orders where user = :user',
                                         ttl=0,
