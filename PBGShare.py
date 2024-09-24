@@ -1,5 +1,7 @@
 from pathlib import Path
 from time import sleep
+import sys
+from io import TextIOWrapper
 from datetime import datetime
 import traceback
 from MySQLDatabase import Database
@@ -25,10 +27,18 @@ class PBGShare():
         self.pbgdir = pb_config.get("main", "pbgdir")
     
 def main():
+    logfile = Path(f'PBGShare.log')
+    sys.stdout = TextIOWrapper(open(logfile,"ab",0), write_through=True)
+    sys.stderr = TextIOWrapper(open(logfile,"ab",0), write_through=True)
     print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Start: PBData')
     pbdata = PBGShare()
     while True:
         try:
+            if logfile.exists():
+                if logfile.stat().st_size >= 10485760:
+                    logfile.replace(f'{str(logfile)}.old')
+                    sys.stdout = TextIOWrapper(open(logfile,"ab",0), write_through=True)
+                    sys.stderr = TextIOWrapper(open(logfile,"ab",0), write_through=True)
             pbdata.update_db()
             print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Sleep for 5 minutes')
             sleep(300)

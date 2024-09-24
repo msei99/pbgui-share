@@ -183,8 +183,8 @@ class Database():
                                         ttl=0,
                                         params=dict(user=user.name))
                 for index, position in positions.iterrows():
-                    if position[0] not in position_ids:
-                        session.execute(text(f"DELETE FROM position WHERE id = {position[0]}"))
+                    if position.iloc[0] not in position_ids:
+                        session.execute(text(f"DELETE FROM position WHERE id = {position.iloc[0]}"))
                 order_params = [dict(id=o[0], symbol=o[1], timestamp=o[2], amount=o[3], price=o[4], side=o[5], uniqueid=o[6], user=o[7]) for o in orders]
                 session.execute(text("REPLACE INTO orders VALUES (:id, :symbol, :timestamp, :amount, :price, :side, :uniqueid, :user);")
                                 ,params=order_params)
@@ -192,8 +192,8 @@ class Database():
                                         ttl=0,
                                         params=dict(user=user.name))
                 for index, order in orders.iterrows():
-                    if order[0] not in orders_ids:
-                        session.execute(text(f"DELETE FROM orders WHERE id = {order[0]}"))
+                    if order.iloc[0] not in orders_ids:
+                        session.execute(text(f"DELETE FROM orders WHERE id = {order.iloc[0]}"))
                 price_params = [dict(id=p[0], symbol=p[1], timestamp=p[2], price=p[3], user=p[4]) for p in prices]
                 session.execute(text("REPLACE INTO prices VALUES (:id, :symbol, :timestamp, :price, :user);")
                                 ,params=price_params)
@@ -201,8 +201,8 @@ class Database():
                                         ttl=0,
                                         params=dict(user=user.name))
                 for index, price in prices.iterrows():
-                    if price[0] not in prices_ids:
-                        session.execute(text(f"DELETE FROM prices WHERE id = {price[0]}"))
+                    if price.iloc[0] not in prices_ids:
+                        session.execute(text(f"DELETE FROM prices WHERE id = {price.iloc[0]}"))
                 history_params = [dict(id=hist[0], symbol=hist[1], timestamp=hist[2], income=hist[3], uniqueid=hist[4], user=hist[5]) for hist in history]
                 session.execute(text("INSERT IGNORE INTO history VALUES (:id, :symbol, :timestamp, :income, :uniqueid, :user);")
                                 ,params=history_params)
@@ -219,7 +219,7 @@ class Database():
         exchange = Exchange(user.exchange, user)
         try:
             for index, sym in symbols.iterrows():
-                symbol = sym[0]
+                symbol = sym.iloc[0]
                 if symbol[-4:] == "USDT":
                     symbol_ccxt = f'{symbol[0:-4]}/USDT:USDT'
                 elif symbol[-4:] == "USDC":
