@@ -31,6 +31,10 @@
         "exchange": "bybit",
         "url": "https://i.bybit.com/oTlabPz?action=inviteToCopy"
     },
+    "bybit_CPTMEME": {
+        "exchange": "bybit",
+        "url": "https://i.bybit.com/15eabJPi?action=inviteToCopy"
+    },
     "bybit_CPTPro": {
         "exchange": "bybit",
         "url": "https://i.bybit.com/1RVg8abA"
