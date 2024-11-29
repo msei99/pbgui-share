@@ -47,6 +47,10 @@
         "exchange": "hyperliquid",
         "url": "https://app.hyperliquid.xyz/vaults/0x9bb6e9a1e81b11f938da15126ce6320decc35262"
     },
+    "Gucky": {
+        "exchange": "bybit",
+        "url": "https://i.bybit.com/1abfTtiI?action=inviteToCopy"
+    },
     "manibybit08": {
         "exchange": "bybit",
         "url": "https://i.bybit.com/1YwTab6R?action=inviteToCopy"
