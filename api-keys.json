@@ -1,7 +1,16 @@
 {
     "binance_CPT": {
         "exchange": "binance",
-        "url": "https://www.binance.com/en/copy-trading/lead-details/3746904129636329728"
+        "url": "https://www.binance.com/en/copy-trading/lead-details/3746904129636329728",
+        "api_service": true
+    },
+    "binance_UNICFG": {
+        "exchange": "binance",
+        "api_service": true
+    },
+    "binance_UNIV7": {
+        "exchange": "binance",
+        "api_service": true
     },
     "bybit_CPT1": {
         "exchange": "bybit",
@@ -17,11 +26,13 @@
     },
     "bybit_CPT4": {
         "exchange": "bybit",
-        "url": "https://i.bybit.com/289mabh9?action=inviteToCopy"
+        "url": "https://i.bybit.com/289mabh9?action=inviteToCopy",
+        "api_service": true
     },
     "bybit_CPTDOGEONLY": {
         "exchange": "bybit",
-        "url": "https://i.bybit.com/Ptabusy?action=inviteToCopy"
+        "url": "https://i.bybit.com/Ptabusy?action=inviteToCopy",
+        "api_service": true
     },
     "bybit_CPTForagerHR": {
         "exchange": "bybit",
@@ -33,11 +44,13 @@
     },
     "bybit_CPTMEME": {
         "exchange": "bybit",
-        "url": "https://i.bybit.com/15eabJPi?action=inviteToCopy"
+        "url": "https://i.bybit.com/15eabJPi?action=inviteToCopy",
+        "api_service": true
     },
     "bybit_CPTPro": {
         "exchange": "bybit",
-        "url": "https://i.bybit.com/1RVg8abA"
+        "url": "https://i.bybit.com/1RVg8abA",
+        "api_service": true
     },
     "bybit_SOLUSDT": {
         "exchange": "bybit",
@@ -57,7 +70,8 @@
     },
     "manibybit09": {
         "exchange": "bybit",
-        "url": "https://i.bybit.com/1DabYP2V?action=inviteToCopy"
+        "url": "https://i.bybit.com/1DabYP2V?action=inviteToCopy",
+        "api_service": true
     },
     "manicpthighroller": {
         "exchange": "bybit",
@@ -69,6 +83,7 @@
     },
     "tikverylowrisk": {
         "exchange": "bybit",
-        "url": "https://i.bybit.com/abXfa03?action=inviteToCopy"
+        "url": "https://i.bybit.com/abXfa03?action=inviteToCopy",
+        "api_service": true
     }
 }

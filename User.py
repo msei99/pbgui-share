@@ -6,6 +6,7 @@ class User:
         self._name = None
         self._exchange = None
         self._url = None
+        self._api_service = False
     
     @property
     def name(self): return self._name
@@ -13,6 +14,8 @@ class User:
     def exchange(self): return self._exchange
     @property
     def url(self): return self._url
+    @property
+    def api_service(self): return self._api_service
 
     @name.setter
     def name(self, new_name):
@@ -23,6 +26,9 @@ class User:
     @url.setter
     def url(self, new_url):
         self._url = new_url
+    @api_service.setter
+    def api_service(self, new_api_service):
+        self._api_service = new_api_service
 
 
 class Users:
@@ -56,12 +62,6 @@ class Users:
                 return True
         return False
 
-    def remove_user(self, name: str):
-        for user in self.users:
-            if user.name == name:
-                self.users.remove(user)
-                self.save()
-
     def find_user(self, name: str):
         for user in self.users:
             if user.name == name:
@@ -91,20 +91,12 @@ class Users:
                 my_user.name = user
                 my_user.exchange = users[user]["exchange"]
                 if "url" in users[user]:
-                    my_user.url = users[user]["url"]    
+                    my_user.url = users[user]["url"]
+                if "api_service" in users[user]:
+                    my_user.api_service = users[user]["api_service"]    
                 self.users.append(my_user)
         self.users.sort(key=lambda x: x.name)
 
-    def save(self):
-        save_users = {}
-        for user in self.users:
-            save_users[user.name] = ({
-                        "exchange": user.exchange
-                    })
-            if user.url:
-                save_users[user.name]["url"] = user.url
-        with Path(f'{self.api_path}').open("w", encoding="UTF-8") as f:
-            json.dump(save_users, f, indent=4)
 
 def main():
     print("Don't Run this Class from CLI")
