@@ -176,9 +176,10 @@ class Database():
         try:
             with self.conn.session as session:
                 position_params = [dict(id=p[0], symbol=p[1], timestamp=p[2], psize=p[3], upnl=p[4], entry=p[5], user=p[6]) for p in positions]
-                session.execute(text("REPLACE INTO position (id, symbol, timestamp, psize, upnl, entry, user) VALUES (:id, :symbol, :timestamp, :psize, :upnl, :entry, :user);")
-                                ,params=position_params)
-                session.commit()
+                if position_params:
+                    session.execute(text("REPLACE INTO position (id, symbol, timestamp, psize, upnl, entry, user) VALUES (:id, :symbol, :timestamp, :psize, :upnl, :entry, :user);")
+                                    ,params=position_params)
+                    session.commit()
                 positions = self.conn.query('select * from position where user = :user',
                                         ttl=0,
                                         params=dict(user=user.name))
@@ -186,8 +187,9 @@ class Database():
                     if position.iloc[0] not in position_ids:
                         session.execute(text(f"DELETE FROM position WHERE id = {position.iloc[0]}"))
                 order_params = [dict(id=o[0], symbol=o[1], timestamp=o[2], amount=o[3], price=o[4], side=o[5], uniqueid=o[6], user=o[7]) for o in orders]
-                session.execute(text("REPLACE INTO orders VALUES (:id, :symbol, :timestamp, :amount, :price, :side, :uniqueid, :user);")
-                                ,params=order_params)
+                if order_params:
+                    session.execute(text("REPLACE INTO orders VALUES (:id, :symbol, :timestamp, :amount, :price, :side, :uniqueid, :user);")
+                                    ,params=order_params)
                 orders = self.conn.query('select * from orders where user = :user',
                                         ttl=0,
                                         params=dict(user=user.name))
@@ -195,8 +197,9 @@ class Database():
                     if order.iloc[0] not in orders_ids:
                         session.execute(text(f"DELETE FROM orders WHERE id = {order.iloc[0]}"))
                 price_params = [dict(id=p[0], symbol=p[1], timestamp=p[2], price=p[3], user=p[4]) for p in prices]
-                session.execute(text("REPLACE INTO prices VALUES (:id, :symbol, :timestamp, :price, :user);")
-                                ,params=price_params)
+                if price_params:
+                    session.execute(text("REPLACE INTO prices VALUES (:id, :symbol, :timestamp, :price, :user);")
+                                    ,params=price_params)
                 prices = self.conn.query('select * from prices where user = :user',
                                         ttl=0,
                                         params=dict(user=user.name))
@@ -204,8 +207,9 @@ class Database():
                     if price.iloc[0] not in prices_ids:
                         session.execute(text(f"DELETE FROM prices WHERE id = {price.iloc[0]}"))
                 history_params = [dict(id=hist[0], symbol=hist[1], timestamp=hist[2], income=hist[3], uniqueid=hist[4], user=hist[5]) for hist in history]
-                session.execute(text("INSERT IGNORE INTO history VALUES (:id, :symbol, :timestamp, :income, :uniqueid, :user);")
-                                ,params=history_params)
+                if history_params:
+                    session.execute(text("INSERT IGNORE INTO history VALUES (:id, :symbol, :timestamp, :income, :uniqueid, :user);")
+                                    ,params=history_params)
                 session.commit()
         except Exception as e:
             print(e)
