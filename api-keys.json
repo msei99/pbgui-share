@@ -52,9 +52,22 @@
         "url": "https://i.bybit.com/1RVg8abA",
         "api_service": true
     },
+    "bybit_CPTV7HR": {
+        "exchange": "bybit",
+        "url": "https://i.bybit.com/1JPabD5u?action=inviteToCopy",
+        "api_service": true
+    },
+    "bybit_crash1": {
+        "exchange": "bybit",
+        "api_service": true
+    },
     "bybit_SOLUSDT": {
         "exchange": "bybit",
         "url": "https://i.bybit.com/1qabmY01?action=inviteToCopy"
+    },
+    "bitget_UNI_MEME": {
+        "exchange": "bitget",
+        "api_service": true
     },
     "hl_manicpt": {
         "exchange": "hyperliquid",
@@ -65,6 +78,10 @@
         "url": "https://app.hyperliquid.xyz/vaults/0x23b9ede4709fa155a7a13ef7cbf852925a3db319"
     },
     "Gucky": {
+        "exchange": "bybit",
+        "url": "https://i.bybit.com/133abXb8?action=inviteToCopy"
+    },
+    "Gucky_1coin_1dot5x": {
         "exchange": "bybit",
         "url": "https://i.bybit.com/1abfTtiI?action=inviteToCopy"
     },
