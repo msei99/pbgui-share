@@ -18,11 +18,13 @@
     },
     "bybit_CPT2": {
         "exchange": "bybit",
-        "url": "https://i.bybit.com/25alabs3?action=inviteToCopy"
+        "url": "https://i.bybit.com/25alabs3?action=inviteToCopy",
+        "api_service": true
     },
     "bybit_CPT3": {
         "exchange": "bybit",
-        "url": "https://i.bybit.com/1Kgab32u?action=inviteToCopy"
+        "url": "https://i.bybit.com/1Kgab32u?action=inviteToCopy",
+        "api_service": true
     },
     "bybit_CPT4": {
         "exchange": "bybit",
