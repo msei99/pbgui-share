@@ -85,6 +85,11 @@
         "exchange": "bybit",
         "url": "https://i.bybit.com/133abXb8?action=inviteToCopy"
     },
+    "Gucky_4coin_2dot5x": {
+        "exchange": "bybit",
+        "url": "https://i.bybit.com/PBJKabv?action=inviteToCopy",
+        "api_service": true
+    },
     "manibybit08": {
         "exchange": "bybit",
         "url": "https://i.bybit.com/1YwTab6R?action=inviteToCopy"
