@@ -113,5 +113,17 @@
         "exchange": "bybit",
         "url": "https://i.bybit.com/abXfa03?action=inviteToCopy",
         "api_service": true
+    },
+    "c10002_api001": {
+        "exchange": "okx",
+        "api_service": true
+    },
+    "c10004_api001": {
+        "exchange": "bybit",
+        "api_service": true
+    },
+    "c10005_api001": {
+        "exchange": "binance",
+        "api_service": true
     }
 }
