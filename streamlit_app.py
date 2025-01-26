@@ -26,10 +26,11 @@ def set_page_config():
 
 def view():
     user = st.session_state.view
-    if user.url:
-        st.markdown(f'#### Copy Trading: [{user.name}](%s)' % user.url)
+    st.markdown(f'##### Exchange: {user.exchange}')
     if user.api_service:
-        st.markdown('#### API-Service available',help=help_api_service)
+        st.markdown('##### API-Service available',help=help_api_service)
+    if user.url:
+        st.markdown(f'##### Copy Trading: [{user.name}](%s)' % user.url)
     view_pnl(user)
     view_income(user)
     view_top_symbols(user)
@@ -211,7 +212,6 @@ def view_orders():
     st.plotly_chart(fig, key=f"dashboard_orders")   
 
 set_page_config()
-st.title("PBGui - Dashboard Share")
 
 if "users" not in st.session_state:
     st.session_state.users = Users()
@@ -233,3 +233,6 @@ with st.sidebar:
 
 if "view" in st.session_state:
     view()
+else:
+    st.title("PBGui - Dashboard Share")
+    st.info("Select a dashboard from the sidebar")

@@ -125,5 +125,9 @@
     "c10005_api001": {
         "exchange": "binance",
         "api_service": true
+    },
+    "c10006_api001": {
+        "exchange": "binance",
+        "api_service": true
     }
 }
