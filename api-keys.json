@@ -12,6 +12,10 @@
         "exchange": "binance",
         "api_service": true
     },
+    "bitget_CPT": {
+        "exchange": "bitget",
+        "url": "https://www.bitget.com/de/copy-trading/trader/bfbc4d7187b03056a397/futures?clacCode=B9KSRGUQ"
+    },
     "bybit_CPT1": {
         "exchange": "bybit",
         "url": "https://i.bybit.com/28bMabOR?action=inviteToCopy"
@@ -70,6 +74,18 @@
     "bitget_UNI_MEME": {
         "exchange": "bitget",
         "api_service": true
+    },
+    "gateio_cpt": {
+        "exchange": "Gate.io",
+        "url": "https://www.gate.io/en/copytrading/trader/futures/8796?ref=VLIRXFPYBW&ref_type=117"
+    },
+    "hl_Gucky_1coin_1dot5x": {
+        "exchange": "hyperliquid",
+        "url": "https://app.hyperliquid.xyz/vaults/0xd2f03635901956b950737bbf02463dfad9f2e9e1"
+    },
+    "hl_Gucky_4coin_2dot5x": {
+        "exchange": "hyperliquid",
+        "url": "https://app.hyperliquid.xyz/vaults/0x73f6553d3a6b570ab37957b32a75c7fc0ebff6e9"
     },
     "hl_manicpt": {
         "exchange": "hyperliquid",
