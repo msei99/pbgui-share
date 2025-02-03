@@ -16,6 +16,10 @@
         "exchange": "bitget",
         "url": "https://www.bitget.com/de/copy-trading/trader/bfbc4d7187b03056a397/futures?clacCode=B9KSRGUQ"
     },
+    "bitget_ETHUSDT": {
+        "exchange": "bitget",
+        "api_service": true
+    },
     "bybit_CPT1": {
         "exchange": "bybit",
         "url": "https://i.bybit.com/28bMabOR?action=inviteToCopy"
