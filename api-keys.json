@@ -69,6 +69,7 @@
     },
     "bybit_crash1": {
         "exchange": "bybit",
+        "url": "https://i.bybit.com/XabnGqs?action=inviteToCopy",
         "api_service": true
     },
     "bybit_SOLUSDT": {
