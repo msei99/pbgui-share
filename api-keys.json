@@ -150,5 +150,9 @@
     "c10006_api001": {
         "exchange": "binance",
         "api_service": true
+    },
+    "c10007_api001": {
+        "exchange": "bybit",
+        "api_service": true
     }
 }
