@@ -62,6 +62,11 @@
         "url": "https://i.bybit.com/1RVg8abA",
         "api_service": true
     },
+    "bybit_CPTPro_v2": {
+        "exchange": "bybit",
+        "url": "https://i.bybit.com/2I0LQabM",
+        "api_service": true
+    },
     "bybit_CPTV7HR": {
         "exchange": "bybit",
         "url": "https://i.bybit.com/1JPabD5u?action=inviteToCopy",
