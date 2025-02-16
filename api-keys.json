@@ -86,7 +86,7 @@
         "api_service": true
     },
     "gateio_cpt": {
-        "exchange": "Gate.io",
+        "exchange": "gateio",
         "url": "https://www.gate.io/en/copytrading/trader/futures/8796?ref=VLIRXFPYBW&ref_type=117"
     },
     "hl_Gucky_1coin_1dot5x": {
