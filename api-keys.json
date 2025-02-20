@@ -102,6 +102,10 @@
         "exchange": "hyperliquid",
         "url": "https://app.hyperliquid.xyz/vaults/0xd2f03635901956b950737bbf02463dfad9f2e9e1"
     },
+    "hl_Gucky_2coin_2dot75x": {
+        "exchange": "hyperliquid",
+        "url": "https://app.hyperliquid.xyz/vaults/0x3a6747c8e913085e243a2c22d188dafa8c6a612a"
+    },
     "hl_Gucky_4coin_2dot5x": {
         "exchange": "hyperliquid",
         "url": "https://app.hyperliquid.xyz/vaults/0x73f6553d3a6b570ab37957b32a75c7fc0ebff6e9"
