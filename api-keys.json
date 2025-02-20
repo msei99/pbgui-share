@@ -4,6 +4,10 @@
         "url": "https://www.binance.com/en/copy-trading/lead-details/3746904129636329728",
         "api_service": true
     },
+    "binance_Gucky_2coin_1dot75x": {
+        "exchange": "binance",
+        "api_service": true
+    },
     "binance_UNICFG": {
         "exchange": "binance",
         "api_service": true
@@ -42,6 +46,11 @@
     "bybit_CPTDOGEONLY": {
         "exchange": "bybit",
         "url": "https://i.bybit.com/Ptabusy?action=inviteToCopy",
+        "api_service": true
+    },
+    "bybit_DOGEUSDT_v2": {
+        "exchange": "bybit",
+        "url": "https://i.bybit.com/tNOeabW?action=inviteToCopy",
         "api_service": true
     },
     "bybit_CPTForagerHR": {
