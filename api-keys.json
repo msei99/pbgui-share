@@ -118,10 +118,6 @@
         "exchange": "hyperliquid",
         "url": "https://app.hyperliquid.xyz/vaults/0x23b9ede4709fa155a7a13ef7cbf852925a3db319"
     },
-    "Gucky": {
-        "exchange": "bybit",
-        "url": "https://i.bybit.com/1abfTtiI?action=inviteToCopy"
-    },
     "Gucky_1coin_1dot5x": {
         "exchange": "bybit",
         "url": "https://i.bybit.com/133abXb8?action=inviteToCopy"
@@ -139,10 +135,6 @@
         "exchange": "bybit",
         "url": "https://i.bybit.com/1DabYP2V?action=inviteToCopy",
         "api_service": true
-    },
-    "manicpthighroller": {
-        "exchange": "bybit",
-        "url": "https://i.bybit.com/wSabu9P?action=inviteToCopy"
     },
     "okx_MAINCPT": {
         "exchange": "okx",
