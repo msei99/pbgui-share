@@ -57,10 +57,6 @@
         "exchange": "bybit",
         "url": "https://i.bybit.com/ab21xc5H?action=inviteToCopy"
     },
-    "bybit_CPTForagerMR": {
-        "exchange": "bybit",
-        "url": "https://i.bybit.com/oTlabPz?action=inviteToCopy"
-    },
     "bybit_CPTMEME": {
         "exchange": "bybit",
         "url": "https://i.bybit.com/15eabJPi?action=inviteToCopy",
