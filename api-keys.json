@@ -2,6 +2,10 @@
     "binance_CPT": {
         "exchange": "binance",
         "url": "https://www.binance.com/en/copy-trading/lead-details/3746904129636329728",
+        "backtests": {
+            "2024": "https://github.com/msei99/pbconfigs/blob/main/api-service/binance_CPT_2024.png?raw=true", 
+            "all": "https://github.com/msei99/pbconfigs/blob/main/api-service/binance_CPT_all.png?raw=true"
+        },
         "api_service": true
     },
     "binance_Gucky_2coin_1dot75x": {

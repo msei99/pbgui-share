@@ -7,6 +7,7 @@ class User:
         self._exchange = None
         self._url = None
         self._api_service = False
+        self._backtests = False
     
     @property
     def name(self): return self._name
@@ -16,6 +17,8 @@ class User:
     def url(self): return self._url
     @property
     def api_service(self): return self._api_service
+    @property
+    def backtests(self): return self._backtests
 
     @name.setter
     def name(self, new_name):
@@ -29,6 +32,9 @@ class User:
     @api_service.setter
     def api_service(self, new_api_service):
         self._api_service = new_api_service
+    @backtests.setter
+    def backtests(self, new_backtests):
+        self._backtests = new_backtests
 
 
 class Users:
@@ -94,6 +100,8 @@ class Users:
                     my_user.url = users[user]["url"]
                 if "api_service" in users[user]:
                     my_user.api_service = users[user]["api_service"]    
+                if "backtests" in users[user]:
+                    my_user.backtests = users[user]["backtests"]
                 self.users.append(my_user)
         self.users.sort(key=lambda x: x.name)
 

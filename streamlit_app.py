@@ -31,6 +31,12 @@ def view():
         st.markdown('##### API-Service available',help=help_api_service)
     if user.url:
         st.markdown(f'##### Copy Trading: [{user.name}](%s)' % user.url)
+    if user.backtests:
+        if user.backtests:
+            backtests = ""
+            for name, url in user.backtests.items():
+                backtests = backtests + f"[{name}](%s) " % url
+            st.markdown('##### Backtest: ' + backtests)
     view_pnl(user)
     view_income(user)
     view_top_symbols(user)
