@@ -18,7 +18,8 @@
     },
     "bitget_CPT": {
         "exchange": "bitget",
-        "url": "https://www.bitget.com/de/copy-trading/trader/bfbc4d7187b03056a397/futures?clacCode=B9KSRGUQ"
+        "url": "https://www.bitget.com/de/copy-trading/trader/bfbc4d7187b03056a397/futures?clacCode=B9KSRGUQ",
+        "api_service": true
     },
     "bitget_ETHUSDT": {
         "exchange": "bitget",
@@ -52,10 +53,6 @@
         "exchange": "bybit",
         "url": "https://i.bybit.com/tNOeabW?action=inviteToCopy",
         "api_service": true
-    },
-    "bybit_CPTForagerHR": {
-        "exchange": "bybit",
-        "url": "https://i.bybit.com/ab21xc5H?action=inviteToCopy"
     },
     "bybit_CPTMEME": {
         "exchange": "bybit",
@@ -116,7 +113,13 @@
     },
     "Gucky_1coin_1dot5x": {
         "exchange": "bybit",
-        "url": "https://i.bybit.com/133abXb8?action=inviteToCopy"
+        "url": "https://i.bybit.com/133abXb8?action=inviteToCopy",
+        "api_service": true
+    },
+    "Gucky_2coin_1dot5x": {
+        "exchange": "bybit",
+        "url": "https://i.bybit.com/ab21xc5H?action=inviteToCopy",
+        "api_service": true
     },
     "Gucky_4coin_2dot5x": {
         "exchange": "bybit",
@@ -134,7 +137,8 @@
     },
     "okx_MAINCPT": {
         "exchange": "okx",
-        "url": "https://www.okx.com/de/copy-trading/account/818D80B303AF08B6/swap"
+        "url": "https://www.okx.com/de/copy-trading/account/818D80B303AF08B6/swap",
+        "api_service": true
     },
     "tikverylowrisk": {
         "exchange": "bybit",
