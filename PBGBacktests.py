@@ -31,10 +31,16 @@ class PBGBacktests():
         update = False
         for user in self.users:
             if user.backtests:
-                for name, url in user.backtests.items():
-                    print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Backtest {user.name} {name} {url}')
-                    self.backtest(user, name)
-                    update = True
+                update = True
+                for year in range(2020, datetime.now().year + 1):
+                    year = str(year)
+                    if Path(f'{self.backtestsdir}/{user.name}_{year}.png').exists():
+                        if year != datetime.now().strftime('%Y'):
+                            continue
+                    print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Backtest {user.name} {year}')
+                    self.backtest(user, year)
+                print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Backtests {user.name} all')
+                self.backtest(user, 'all')
         if update:
             print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Update git')
             self.update_git()
@@ -67,12 +73,12 @@ class PBGBacktests():
             print(f'Exception occurred during git operations: {e}')
             traceback.print_exc()
     
-    def backtest(self, user, name):
+    def backtest(self, user, year : str):
         # remove old backtest
-        backtest = Path.cwd() / 'backtests' / f'{user.name}_{name}'
+        backtest = Path.cwd() / 'backtests' / f'{user.name}_{year}'
         if backtest.exists():
             shutil.rmtree(backtest)
-        config = self.create_backtest_json(user, name)
+        config = self.create_backtest_json(user, year)
         cmd = [self.pb7venv, '-u', PurePath(f'{self.pb7dir}/src/backtest.py'), str(PurePath(f'{config}'))]
         result = subprocess.run(cmd, capture_output=True, cwd=self.pb7dir, text=True, start_new_session=True)
         if result.returncode == 0:
@@ -81,13 +87,13 @@ class PBGBacktests():
             if be:
                 self.load_be(be[0])
                 if self.be is not None:
-                    self.save_chart_be(f'{user.name}_{name}')
+                    self.save_chart_be(f'{user.name}_{year}')
             glob_fills = f'{backtest}/**/fills.csv'
             fills = glob.glob(glob_fills, recursive=True)
             if fills:
                 self.load_fills(fills[0])
                 if self.fills is not None:
-                    self.save_chart_symbol(f'{user.name}_{name}')
+                    self.save_chart_symbol(f'{user.name}_{year}')
 
     # Create Chart with plotly
     def save_chart_be(self, file_name):
@@ -137,29 +143,48 @@ class PBGBacktests():
             start_time = timestamp - (self.fills['minute'].iloc[-1] * 60)
             self.fills['time'] = datetime.fromtimestamp(start_time) + pd.to_timedelta(self.fills['minute'], unit='m')
 
-    def create_backtest_json(self, user, name):
+    def create_backtest_json(self, user, year : str):
         # copy config from user to backtests
         config_src = Path(f'{self.pbgdir}/data/run_v7/{user.name}/config.json')
         #config_dst = cwd + backtest
         config_dst_dir = Path.cwd() / 'backtests'
         if not config_dst_dir.exists():
             config_dst_dir.mkdir()
-        config_dst = config_dst_dir / f'{user.name}_{name}.json'
+        config_dst = config_dst_dir / f'{user.name}_{year}.json'
         shutil.copyfile(config_src, config_dst)
         # update config with backtest url
         with open(config_dst, 'r') as f:
             config = json.load(f)
-        config['backtest']["base_dir"] = str(config_dst_dir / f'{user.name}_{name}')
-        if name == 'all':
+        config['backtest']["base_dir"] = str(config_dst_dir / f'{user.name}_{year}')
+        if year == 'all':
             config['backtest']["start_date"] = "2020-01-01"
             # end_date = today - 1 day
             config['backtest']["end_date"] = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-        elif name == '2024':
+        elif year == '2020':
+            config['backtest']["start_date"] = "2020-01-01"
+            config['backtest']["end_date"] = "2020-12-31"
+        elif year == '2021':
+            config['backtest']["start_date"] = "2021-01-01"
+            config['backtest']["end_date"] = "2021-12-31"
+        elif year == '2022':
+            config['backtest']["start_date"] = "2022-01-01"
+            config['backtest']["end_date"] = "2022-12-31"
+        elif year == '2023':
+            config['backtest']["start_date"] = "2023-01-01"
+            config['backtest']["end_date"] = "2023-12-31"
+        elif year == '2024':
             config['backtest']["start_date"] = "2024-01-01"
+            config['backtest']["end_date"] = "2024-12-31"
+        elif year == '2025':
+            config['backtest']["start_date"] = "2025-01-01"
             config['backtest']["end_date"] = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
         self.ed = config['backtest']["end_date"]
-        config['backtest']["exchanges"] = [user.exchange]
+        if user.exchange not in ['binance', 'bybit']:
+            config['backtest']["exchange"] = "binance"
+        else:
+            config['backtest']["exchanges"] = [user.exchange]
         config['backtest']["combine_ohlcvs"] = False
+        config['backtest']["starting_balance"] = 1000
         # save config
         with open(config_dst, 'w') as f:
             json.dump(config, f, indent=4)
@@ -205,8 +230,13 @@ def main():
                     sys.stdout = TextIOWrapper(open(logfile,"ab",0), write_through=True)
                     sys.stderr = TextIOWrapper(open(logfile,"ab",0), write_through=True)
             pbbacktests.update_backtests()
-            print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Sleep for 5 minutes')
-            sleep(300)
+            now = datetime.now()
+            next_run = (now + timedelta(days=1)).replace(hour=4, minute=0, second=0, microsecond=0)
+            sleep_seconds = (next_run - now).total_seconds()
+            sleep_hours, rem = divmod(sleep_seconds, 3600)
+            sleep_minutes, sleep_seconds = divmod(rem, 60)
+            print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Sleep until {next_run.isoformat(sep=" ", timespec="seconds")} for {int(sleep_hours)} hours, {int(sleep_minutes)} minutes, and {int(sleep_seconds)} seconds')
+            sleep(next_run.timestamp() - now.timestamp())
             pbbacktests.users.load()
         except Exception as e:
             print(f'Something went wrong, but continue {e}')

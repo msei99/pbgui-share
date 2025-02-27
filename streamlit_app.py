@@ -34,8 +34,11 @@ def view():
     if user.backtests:
         if user.backtests:
             backtests = ""
-            for name, url in user.backtests.items():
-                backtests = backtests + f"[{name}](%s) " % url
+            for year in range(2020, datetime.now().year + 1):
+                url = user.backtests + f'/{user.name}_{year}.png?raw=true'
+                backtests = backtests + f"[{year}](%s) " % url
+            url = user.backtests + f'/{user.name}_all.png?raw=true'
+            backtests = backtests + f"[all](%s) " % url
             st.markdown('##### Backtest: ' + backtests)
     view_pnl(user)
     view_income(user)
