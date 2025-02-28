@@ -12,6 +12,7 @@
     },
     "binance_UNICFG": {
         "exchange": "binance",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "api_service": true
     },
     "binance_UNIV7": {
