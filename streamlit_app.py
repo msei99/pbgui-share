@@ -34,12 +34,18 @@ def view():
     if user.backtests:
         if user.backtests:
             backtests = ""
+            symbols = ""
             for year in range(2020, datetime.now().year + 1):
                 url = user.backtests + f'/{user.name}_{year}.png?raw=true'
+                url_symbols = user.backtests + f'/{user.name}_{year}_symbols.png?raw=true'
+                symbols = symbols + f"[{year}](%s) " % url_symbols
                 backtests = backtests + f"[{year}](%s) " % url
             url = user.backtests + f'/{user.name}_all.png?raw=true'
+            url_symbols = user.backtests + f'/{user.name}_all_symbols.png?raw=true'
+            symbols = symbols + f"[all](%s) " % url_symbols
             backtests = backtests + f"[all](%s) " % url
             st.markdown('##### Backtest: ' + backtests)
+            st.markdown('##### Symbols: ' + symbols)
     view_pnl(user)
     view_income(user)
     view_top_symbols(user)
