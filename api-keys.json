@@ -22,6 +22,7 @@
     },
     "bitget_CPT": {
         "exchange": "bitget",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "url": "https://www.bitget.com/de/copy-trading/trader/bfbc4d7187b03056a397/futures?clacCode=B9KSRGUQ",
         "api_service": true
     },
@@ -102,6 +103,7 @@
     },
     "bitget_UNI_MEME": {
         "exchange": "bitget",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "api_service": true
     },
     "gateio_cpt": {
@@ -126,6 +128,7 @@
     },
     "hl_manicpt": {
         "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "url": "https://app.hyperliquid.xyz/vaults/0x9bb6e9a1e81b11f938da15126ce6320decc35262"
     },
     "hl_manicptpro": {
@@ -153,6 +156,7 @@
     },
     "manibybit08": {
         "exchange": "bybit",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "url": "https://i.bybit.com/1YwTab6R?action=inviteToCopy"
     },
     "manibybit09": {
@@ -169,6 +173,7 @@
     },
     "tikverylowrisk": {
         "exchange": "bybit",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "url": "https://i.bybit.com/abXfa03?action=inviteToCopy",
         "api_service": true
     },
