@@ -7,6 +7,7 @@
     },
     "binance_Gucky_2coin_1dot75x": {
         "exchange": "binance",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "api_service": true
     },
     "binance_UNICFG": {
@@ -89,6 +90,7 @@
     },
     "bybit_crash1": {
         "exchange": "bybit",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "url": "https://i.bybit.com/XabnGqs?action=inviteToCopy",
         "api_service": true
     },
@@ -103,23 +105,26 @@
     },
     "gateio_cpt": {
         "exchange": "gateio",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "url": "https://www.gate.io/en/copytrading/trader/futures/8796?ref=VLIRXFPYBW&ref_type=117"
     },
     "hl_Gucky_1coin_1dot5x": {
         "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "url": "https://app.hyperliquid.xyz/vaults/0xd2f03635901956b950737bbf02463dfad9f2e9e1"
     },
     "hl_Gucky_2coin_1dot75x": {
         "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "url": "https://app.hyperliquid.xyz/vaults/0x3a6747c8e913085e243a2c22d188dafa8c6a612a"
     },
     "hl_Gucky_4coin_2dot5x": {
         "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "url": "https://app.hyperliquid.xyz/vaults/0x73f6553d3a6b570ab37957b32a75c7fc0ebff6e9"
     },
     "hl_manicpt": {
         "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "url": "https://app.hyperliquid.xyz/vaults/0x9bb6e9a1e81b11f938da15126ce6320decc35262"
     },
     "hl_manicptpro": {
@@ -129,16 +134,19 @@
     },
     "Gucky_1coin_1dot5x": {
         "exchange": "bybit",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "url": "https://i.bybit.com/133abXb8?action=inviteToCopy",
         "api_service": true
     },
     "Gucky_2coin_1dot5x": {
         "exchange": "bybit",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "url": "https://i.bybit.com/ab21xc5H?action=inviteToCopy",
         "api_service": true
     },
     "Gucky_4coin_2dot5x": {
         "exchange": "bybit",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "url": "https://i.bybit.com/PBJKabv?action=inviteToCopy",
         "api_service": true
     },
