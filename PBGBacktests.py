@@ -32,9 +32,6 @@ class PBGBacktests():
     def update_backtests(self):
         update = False
         for user in self.users:
-            if user.name != 'binance_UNICFG':
-                print(user.name)
-                continue
             if user.backtests:
                 update = True
                 for year in range(2020, datetime.now().year + 1):
