@@ -20,6 +20,8 @@ class PBGBacktests():
         self.pbgdir = None
         self.pb7dir = None
         self.pb7venv = None
+        self.pb6dir = None
+        self.pb6venv = None
         self.pbgdir = None
         self.ed = None
         self.be = None
@@ -30,6 +32,9 @@ class PBGBacktests():
     def update_backtests(self):
         update = False
         for user in self.users:
+            if user.name != 'binance_UNICFG':
+                print(user.name)
+                continue
             if user.backtests:
                 update = True
                 for year in range(2020, datetime.now().year + 1):
@@ -78,12 +83,47 @@ class PBGBacktests():
         backtest = Path.cwd() / 'backtests' / f'{user.name}_{year}'
         if backtest.exists():
             shutil.rmtree(backtest)
-        config = self.create_backtest_json(user, year)
-        cmd = [self.pb7venv, '-u', PurePath(f'{self.pb7dir}/src/backtest.py'), str(PurePath(f'{config}'))]
-        result = subprocess.run(cmd, capture_output=True, cwd=self.pb7dir, text=True, start_new_session=True)
+        if Path(f'{self.pbgdir}/data/run_v7/{user.name}/config.json').exists():
+            config = self.create_backtest_json(user, year)
+            cmd = [self.pb7venv, '-u', PurePath(f'{self.pb7dir}/src/backtest.py'), str(PurePath(f'{config}'))]
+            result = subprocess.run(cmd, capture_output=True, cwd=self.pb7dir, text=True, start_new_session=True)
+        elif Path(f'{self.pbgdir}/data/multi/{user.name}/multi.hjson').exists():
+            multi = Path(f'{self.pbgdir}/data/multi/{user.name}/multi.hjson')
+            base_dir = Path.cwd() / 'backtests' / f'{user.name}_{year}'
+            if year == 'all':
+                sd = "2020-01-01"
+                # end_date = today - 1 day
+                ed = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+            elif year == '2020':
+                sd = "2020-01-01"
+                ed = "2020-12-31"
+            elif year == '2021':
+                sd = "2021-01-01"
+                ed = "2021-12-31"
+            elif year == '2022':
+                sd = "2022-01-01"
+                ed = "2022-12-31"
+            elif year == '2023':
+                sd = "2023-01-01"
+                ed = "2023-12-31"
+            elif year == '2024':
+                sd = "2024-01-01"
+                ed = "2024-12-31"
+            elif year == '2025':
+                sd = "2025-01-01"
+                ed = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+            self.ed = ed
+            cmd = [self.pb6venv, '-u', PurePath(f'{self.pb6dir}/backtest_multi.py'), '-bc', str(PurePath(f'{multi}')), '-bd', str(PurePath(f'{base_dir}')), '-sd', sd, '-ed', ed, '-sb', '1000']
+            result = subprocess.run(cmd, capture_output=True, cwd=self.pb6dir, text=True, start_new_session=True)
+        else:
+            print(f'No config found for {user.name}')
+            return
         if result.returncode == 0:
             glob_be = f'{backtest}/**/balance_and_equity.csv'
             be = glob.glob(glob_be, recursive=True)
+            if not be:
+                glob_be = f'{backtest}/**/stats.csv'
+                be = glob.glob(glob_be, recursive=True)
             if be:
                 self.load_be(be[0])
                 if self.be is not None:
@@ -94,6 +134,13 @@ class PBGBacktests():
                 self.load_fills(fills[0])
                 if self.fills is not None:
                     self.save_chart_symbol(f'{user.name}_{year}')
+        else:
+            # create a png with text "Not enough data for year {year}"
+            fig = go.Figure()
+            fig.add_annotation(text=f'Not enough data for year {year}', showarrow=False)
+            fig.update_layout(template='plotly_dark', width=1920, height=1080)
+            fig.write_image(f'{self.backtestsdir}/{user.name}_{year}.png')
+            fig.write_image(f'{self.backtestsdir}/{user.name}_{year}_symbol.png')
 
     # Create Chart with plotly
     def save_chart_be(self, file_name):
@@ -143,6 +190,20 @@ class PBGBacktests():
             start_time = timestamp - (self.fills['minute'].iloc[-1] * 60)
             self.fills['time'] = datetime.fromtimestamp(start_time) + pd.to_timedelta(self.fills['minute'], unit='m')
 
+    def create_backtest_hjson(self, user, year : str):
+        # copy config from user to backtests
+        config_src = Path(f'{self.pbgdir}/data/multi/{user.name}')
+        #config_dst = cwd + backtest
+        config_dst_dir = Path.cwd() / 'backtests'
+        if not config_dst_dir.exists():
+            config_dst_dir.mkdir()
+        config_dst = config_dst_dir / f'{user.name}_{year}'
+        shutil.copytree(config_src, config_dst)
+        # update config with backtest url
+        config_multi = config_dst / 'multi.hjson'
+        with open(config_multi, 'r') as f:
+            config = hjson.load(f)
+    
     def create_backtest_json(self, user, year : str):
         # copy config from user to backtests
         config_src = Path(f'{self.pbgdir}/data/run_v7/{user.name}/config.json')
@@ -155,6 +216,21 @@ class PBGBacktests():
         # update config with backtest url
         with open(config_dst, 'r') as f:
             config = json.load(f)
+        # copy config from remote when dynamic_ignore is not disabled
+        if "pbgui" in config:
+            if "dynamic_ignore" in config["pbgui"]:
+                enabled_on = config["pbgui"]["enabled_on"]
+                if enabled_on != "disabled":
+                    approved_coins_path = Path(f'{self.pbgdir}/data/remote/run_v7_{enabled_on}/{user.name}/approved_coins.json')
+                    ignored_coins_path = Path(f'{self.pbgdir}/data/remote/run_v7_{enabled_on}/{user.name}/ignored_coins.json')
+                    if approved_coins_path.exists():
+                        with open(approved_coins_path, 'r') as f:
+                            approved_coins = json.load(f)
+                        config['live']['approved_coins'] = approved_coins
+                    if ignored_coins_path.exists():
+                        with open(ignored_coins_path, 'r') as f:
+                            ignored_coins = json.load(f)
+                        config['live']['ignored_coins'] = ignored_coins
         config['backtest']["base_dir"] = str(config_dst_dir / f'{user.name}_{year}')
         if year == 'all':
             config['backtest']["start_date"] = "2020-01-01"
@@ -202,6 +278,10 @@ class PBGBacktests():
                 self.pb7dir = pb_config.get("main", "pb7dir")
             if pb_config.has_option("main", "pb7venv"):
                 self.pb7venv = pb_config.get("main", "pb7venv")
+            if pb_config.has_option("main", "pb6dir"):
+                self.pb6dir = pb_config.get("main", "pb6dir")
+            if pb_config.has_option("main", "pb6venv"):
+                self.pb6venv = pb_config.get("main", "pb6venv")
     
 def main():
     pbbacktests = PBGBacktests()
@@ -216,6 +296,12 @@ def main():
         return
     if not pbbacktests.pb7venv:
         print(f'pb7venv is not defined in pbgui-share.ini')
+        return
+    if not pbbacktests.pb6dir:
+        print(f'pb6dir is not defined in pbgui-share.ini')
+        return
+    if not pbbacktests.pb6venv:
+        print(f'pb6venv is not defined in pbgui-share.ini')
         return
     # Init logfile
     logfile = Path(f'PBGBacktests.log')
