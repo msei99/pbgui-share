@@ -116,6 +116,16 @@
         "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "url": "https://app.hyperliquid.xyz/vaults/0xd2f03635901956b950737bbf02463dfad9f2e9e1"
     },
+    "hl_Gucky_2coin_1dot25x": {
+        "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "url": "https://app.hyperliquid.xyz/vaults/0x7b71e82ce13e84a6efb081b6e02425ed62898f7b"
+    },
+    "hl_Gucky_2coin_1dot5x": {
+        "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "url": "https://app.hyperliquid.xyz/vaults/0xb5191bb6dba7630faba2a5c12248e4ecbad1991c"
+    },
     "hl_Gucky_2coin_1dot75x": {
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
@@ -179,11 +189,6 @@
     },
     "c10002_api001": {
         "exchange": "okx",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
-        "api_service": true
-    },
-    "c10005_api001": {
-        "exchange": "binance",
         "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "api_service": true
     },
