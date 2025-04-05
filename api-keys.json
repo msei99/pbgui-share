@@ -131,10 +131,20 @@
         "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "url": "https://app.hyperliquid.xyz/vaults/0x3a6747c8e913085e243a2c22d188dafa8c6a612a"
     },
+    "hl_Gucky_3coin_2x": {
+        "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "url": "https://app.hyperliquid.xyz/vaults/0x2e1e1aff25dedf3aae17b6f36d847403f70e196e"
+    },
     "hl_Gucky_4coin_2dot5x": {
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "url": "https://app.hyperliquid.xyz/vaults/0x73f6553d3a6b570ab37957b32a75c7fc0ebff6e9"
+    },
+    "hl_mani_crash_hunter": {
+        "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "url": "https://app.hyperliquid.xyz/vaults/0x1a5c73882b437da4e953bfde380482e2ff5d052c"
     },
     "hl_manicpt": {
         "exchange": "hyperliquid",
@@ -185,6 +195,12 @@
         "exchange": "bybit",
         "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "url": "https://i.bybit.com/abXfa03?action=inviteToCopy",
+        "api_service": true
+    },
+    "tik_v7": {
+        "exchange": "bybit",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "url": "https://i.bybit.com/wSabu9P?action=inviteToCopy",
         "api_service": true
     },
     "c10002_api001": {
