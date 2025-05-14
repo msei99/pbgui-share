@@ -43,6 +43,7 @@ class PBGBacktests():
                     self.backtest(user, year)
                 print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Backtests {user.name} all')
                 self.backtest(user, 'all')
+            break
         if update:
             print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Update git')
             self.update_git()
@@ -64,7 +65,14 @@ class PBGBacktests():
                 print(f'{result.stdout}')
                 return
 
-            cmd = ['git', '-C', str(Path(self.backtestsdir).parent), 'push']
+            cmd = ['git', '-C', str(Path(self.backtestsdir).parent), 'pull']
+            result = subprocess.run(cmd, capture_output=True, cwd=self.pbgdir, text=True, start_new_session=True)
+            if result.returncode != 0:
+                print(f'Error in git pull: {result.stderr}')
+                print(f'{result.stdout}')
+                return
+
+            cmd = ['git', '-C', str(Path(self.backtestsdir).parent), '-r=false', 'push']
             result = subprocess.run(cmd, capture_output=True, cwd=self.pbgdir, text=True, start_new_session=True)
             if result.returncode != 0:
                 print(f'Error in git push: {result.stderr}')
@@ -85,7 +93,12 @@ class PBGBacktests():
             cmd = [self.pb7venv, '-u', PurePath(f'{self.pb7dir}/src/backtest.py'), str(PurePath(f'{config}'))]
             result = subprocess.run(cmd, capture_output=True, cwd=self.pb7dir, text=True, start_new_session=True)
         elif Path(f'{self.pbgdir}/data/multi/{user.name}/multi.hjson').exists():
-            multi = Path(f'{self.pbgdir}/data/multi/{user.name}/multi.hjson')
+            if user.name == 'bitget_UNI_MEME':
+                multi = Path(f'{self.pbgdir}/data/bt_multi/{user.name}/backtest.hjson')
+            elif user.name == 'hl_manicpt':
+                multi = Path(f'{self.pbgdir}/data/bt_multi/{user.name}/backtest.hjson')
+            else:
+                multi = Path(f'{self.pbgdir}/data/multi/{user.name}/multi.hjson')
             base_dir = Path.cwd() / 'backtests' / f'{user.name}_{year}'
             if year == 'all':
                 sd = "2020-01-01"
@@ -110,7 +123,11 @@ class PBGBacktests():
                 sd = "2025-01-01"
                 ed = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
             self.ed = ed
-            cmd = [self.pb6venv, '-u', PurePath(f'{self.pb6dir}/backtest_multi.py'), '-bc', str(PurePath(f'{multi}')), '-bd', str(PurePath(f'{base_dir}')), '-sd', sd, '-ed', ed, '-sb', '1000']
+            if user.exchange not in ['binance', 'bybit']:
+                exchange = 'bybit'
+            else:
+                exchange = user.exchange
+            cmd = [self.pb6venv, '-u', PurePath(f'{self.pb6dir}/backtest_multi.py'), '-bc', str(PurePath(f'{multi}')), '-bd', str(PurePath(f'{base_dir}')), '-sd', sd, '-ed', ed, '-sb', '1000', '-e', exchange]
             result = subprocess.run(cmd, capture_output=True, cwd=self.pb6dir, text=True, start_new_session=True)
         else:
             print(f'No config found for {user.name}')
@@ -302,8 +319,8 @@ def main():
         return
     # Init logfile
     logfile = Path(f'PBGBacktests.log')
-    sys.stdout = TextIOWrapper(open(logfile,"ab",0), write_through=True)
-    sys.stderr = TextIOWrapper(open(logfile,"ab",0), write_through=True)
+    # sys.stdout = TextIOWrapper(open(logfile,"ab",0), write_through=True)
+    # sys.stderr = TextIOWrapper(open(logfile,"ab",0), write_through=True)
     print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Start: PBGBacktests')
     while True:
         try:
