@@ -1,2 +1,11 @@
 [main]
-pbgdir = /path_to_pbgui
+pbgdir = /path/to/software/pbgui
+backtestsdir = /path/to/software/api-service/backtests
+pb7dir = /path/to/software/pb7
+pb7venv = /path/to/software/venv_pb7/bin/python
+pb6dir = /path/to/software/pb6
+pb6venv = /path/to/software/venv_pb6/bin/python
+git_user = username
+git_email = user@email
+git_path = /path/to/software/api-service
+git_token = <token with read/write access>

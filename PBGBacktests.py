@@ -23,6 +23,10 @@ class PBGBacktests():
         self.pb6dir = None
         self.pb6venv = None
         self.pbgdir = None
+        self.git_user = None
+        self.git_email = None
+        self.git_path = None
+        self.git_token = None
         self.ed = None
         self.be = None
         self.fills = None
@@ -31,6 +35,8 @@ class PBGBacktests():
 
     def update_backtests(self):
         update = False
+        if not Path(self.backtestsdir).exists():
+            Path(self.backtestsdir).mkdir(parents=True)
         for user in self.users:
             if user.backtests:
                 update = True
@@ -48,9 +54,44 @@ class PBGBacktests():
             print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Update git')
             self.update_git()
     
+    def load_git_url(self):
+        git_config = configparser.ConfigParser()
+        git_config_file = Path(f"{self.git_path}/.git/config")
+        if not git_config_file.exists():
+            print(f'No git config found')
+            return
+        url = ""
+        git_config.read(git_config_file)
+        if git_config.has_section('remote "origin"'):
+            if git_config.has_option('remote "origin"', 'url'):
+                remote_url = git_config.get('remote "origin"', 'url')
+                if url.startswith("http://"):
+                    url = remote_url.replace("http://", f"http://{self.git_token}@")
+                if remote_url.startswith('https://'):
+                    url = remote_url.replace("https://", f"https://{self.git_token}@")
+        return url
+            
     def update_git(self):
+        url = self.load_git_url()
+        if not url:
+            print(f'No git url found')
+            return
         try:
-            cmd = ['git', '-C', str(Path(self.backtestsdir).parent), 'add', 'api-service/*']
+            # Configure username and email
+            cmd = ["git", "-C", self.git_path, "config", "user.name", self.git_user]
+            try:
+                result = subprocess.run(cmd, capture_output=True, check=True, text=True)
+            except subprocess.CalledProcessError as e:
+                print(f"Error configuring username for {self.my_archive}: {e.stderr}")
+                return
+            cmd = ["git", "-C", self.git_path, "config", "user.email", self.git_email]
+            try:
+                result = subprocess.run(cmd, capture_output=True, check=True, text=True)
+            except subprocess.CalledProcessError as e:
+                print(f"Error configuring email for {self.my_archive}: {e.stderr}")
+                return
+
+            cmd = ['git', '-C', self.git_path, 'add', '-A']
             result = subprocess.run(cmd, capture_output=True, cwd=self.pbgdir, text=True, start_new_session=True)
             if result.returncode != 0:
                 print(f'Error in git add: {result.stderr}')
@@ -58,21 +99,20 @@ class PBGBacktests():
                 return
 
             formatted_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            cmd = ['git', '-C', str(Path(self.backtestsdir).parent), 'commit', '-m', f'update backtests {formatted_time}']
+            cmd = ['git', '-C', self.git_path, 'commit', '-m', f'update backtests {formatted_time}']
             result = subprocess.run(cmd, capture_output=True, cwd=self.pbgdir, text=True, start_new_session=True)
             if result.returncode != 0:
                 print(f'Error in git commit: {result.stderr}')
                 print(f'{result.stdout}')
                 return
 
-            cmd = ['git', '-C', str(Path(self.backtestsdir).parent), 'pull']
+            cmd = ['git', '-C', self.git_path, 'pull']
             result = subprocess.run(cmd, capture_output=True, cwd=self.pbgdir, text=True, start_new_session=True)
             if result.returncode != 0:
                 print(f'Error in git pull: {result.stderr}')
                 print(f'{result.stdout}')
                 return
-
-            cmd = ['git', '-C', str(Path(self.backtestsdir).parent), '-r=false', 'push']
+            cmd = ['git', '-C', self.git_path, 'push', url]
             result = subprocess.run(cmd, capture_output=True, cwd=self.pbgdir, text=True, start_new_session=True)
             if result.returncode != 0:
                 print(f'Error in git push: {result.stderr}')
@@ -296,6 +336,14 @@ class PBGBacktests():
                 self.pb6dir = pb_config.get("main", "pb6dir")
             if pb_config.has_option("main", "pb6venv"):
                 self.pb6venv = pb_config.get("main", "pb6venv")
+            if pb_config.has_option("main", "git_user"):
+                self.git_user = pb_config.get("main", "git_user")
+            if pb_config.has_option("main", "git_email"):
+                self.git_email = pb_config.get("main", "git_email")
+            if pb_config.has_option("main", "git_token"):
+                self.git_token = pb_config.get("main", "git_token")
+            if pb_config.has_option("main", "git_path"):
+                self.git_path = pb_config.get("main", "git_path")
     
 def main():
     pbbacktests = PBGBacktests()

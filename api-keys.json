@@ -7,220 +7,220 @@
     },
     "binance_Gucky_2coin_1dot75x": {
         "exchange": "binance",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "api_service": true
     },
     "binance_UNICFG": {
         "exchange": "binance",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "api_service": true
     },
     "binance_UNIV7": {
         "exchange": "binance",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "api_service": true
     },
     "bitget_CPT": {
         "exchange": "bitget",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://www.bitget.com/de/copy-trading/trader/bfbc4d7187b03056a397/futures?clacCode=B9KSRGUQ",
         "api_service": true
     },
     "bitget_ETHUSDT": {
         "exchange": "bitget",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "api_service": true
     },
     "bybit_CPT1": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/28bMabOR?action=inviteToCopy"
     },
     "bybit_CPT2": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/25alabs3?action=inviteToCopy",
         "api_service": true
     },
     "bybit_CPT3": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
-        "url": "https://i.bybit.com/1Kgab32u?action=inviteToCopy",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
+
         "api_service": true
     },
     "bybit_CPT4": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
-        "url": "https://i.bybit.com/289mabh9?action=inviteToCopy",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
+
         "api_service": true
     },
     "bybit_CPTDOGEONLY": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/Ptabusy?action=inviteToCopy",
         "api_service": true
     },
     "bybit_DOGEUSDT_v2": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/tNOeabW?action=inviteToCopy",
         "api_service": true
     },
     "bybit_CPTMEME": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/15eabJPi?action=inviteToCopy",
         "api_service": true
     },
     "bybit_CPTPro": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/1RVg8abA",
         "api_service": true
     },
     "bybit_CPTPro_v2": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/2I0LQabM",
         "api_service": true
     },
     "bybit_CPTV7HR": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/1JPabD5u?action=inviteToCopy",
         "api_service": true
     },
     "bybit_crash1": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/XabnGqs?action=inviteToCopy",
         "api_service": true
     },
     "bybit_SOLUSDT": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/1qabmY01?action=inviteToCopy"
     },
     "bitget_UNI_MEME": {
         "exchange": "bitget",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "api_service": true
     },
     "gateio_cpt": {
         "exchange": "gateio",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://www.gate.io/en/copytrading/trader/futures/8796?ref=VLIRXFPYBW&ref_type=117"
     },
     "hl_Gucky_1coin_1dot5x": {
         "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://app.hyperliquid.xyz/vaults/0xd2f03635901956b950737bbf02463dfad9f2e9e1"
     },
     "hl_Gucky_2coin_1dot25x": {
         "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://app.hyperliquid.xyz/vaults/0x7b71e82ce13e84a6efb081b6e02425ed62898f7b"
     },
     "hl_Gucky_2coin_1dot5x": {
         "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://app.hyperliquid.xyz/vaults/0xb5191bb6dba7630faba2a5c12248e4ecbad1991c"
     },
     "hl_Gucky_2coin_1dot75x": {
         "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://app.hyperliquid.xyz/vaults/0x3a6747c8e913085e243a2c22d188dafa8c6a612a"
     },
     "hl_Gucky_3coin_2x": {
         "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://app.hyperliquid.xyz/vaults/0x2e1e1aff25dedf3aae17b6f36d847403f70e196e"
     },
     "hl_Gucky_4coin_2dot5x": {
         "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://app.hyperliquid.xyz/vaults/0x73f6553d3a6b570ab37957b32a75c7fc0ebff6e9"
     },
     "hl_mani_crash_hunter": {
         "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://app.hyperliquid.xyz/vaults/0x1a5c73882b437da4e953bfde380482e2ff5d052c"
     },
     "hl_manicpt": {
         "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://app.hyperliquid.xyz/vaults/0x9bb6e9a1e81b11f938da15126ce6320decc35262"
     },
     "hl_manicptpro": {
         "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://app.hyperliquid.xyz/vaults/0x23b9ede4709fa155a7a13ef7cbf852925a3db319"
     },
     "Gucky_1coin_1dot5x": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/133abXb8?action=inviteToCopy",
         "api_service": true
     },
     "Gucky_2coin_1dot5x": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/ab21xc5H?action=inviteToCopy",
         "api_service": true
     },
     "Gucky_4coin_2dot5x": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/PBJKabv?action=inviteToCopy",
         "api_service": true
     },
     "manibybit08": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/1YwTab6R?action=inviteToCopy"
     },
     "manibybit09": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/1DabYP2V?action=inviteToCopy",
         "api_service": true
     },
     "okx_MAINCPT": {
         "exchange": "okx",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://www.okx.com/de/copy-trading/account/818D80B303AF08B6/swap",
         "api_service": true
     },
     "tikverylowrisk": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/abXfa03?action=inviteToCopy",
         "api_service": true
     },
     "tik_v7": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/wSabu9P?action=inviteToCopy",
         "api_service": true
     },
     "c10002_api001": {
         "exchange": "okx",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "api_service": true
     },
     "c10006_api001": {
         "exchange": "binance",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "api_service": true
     },
     "c10007_api001": {
         "exchange": "bybit",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "api_service": true
     },
     "c10008_api001": {
         "exchange": "binance",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "api_service": true
     }
 }
