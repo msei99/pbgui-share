@@ -49,7 +49,6 @@ class PBGBacktests():
                     self.backtest(user, year)
                 print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Backtests {user.name} all')
                 self.backtest(user, 'all')
-            break
         if update:
             print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Update git')
             self.update_git()
