@@ -1,7 +1,7 @@
 {
     "binance_CPT": {
         "exchange": "binance",
-        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://www.binance.com/en/copy-trading/lead-details/3746904129636329728",
         "api_service": true
     },
