@@ -217,5 +217,10 @@
         "exchange": "bybit",
         "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
         "api_service": true
+    },
+    "c10008_api001": {
+        "exchange": "binance",
+        "backtests": "https://github.com/msei99/pbconfigs/blob/main/api-service",
+        "api_service": true
     }
 }
