@@ -20,12 +20,6 @@
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "api_service": true
     },
-    "bitget_CPT": {
-        "exchange": "bitget",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-        "url": "https://www.bitget.com/de/copy-trading/trader/bfbc4d7187b03056a397/futures?clacCode=B9KSRGUQ",
-        "api_service": true
-    },
     "bitget_ETHUSDT": {
         "exchange": "bitget",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
@@ -45,13 +39,13 @@
     "bybit_CPT3": {
         "exchange": "bybit",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-
+        "url": "https://i.bybit.com/1Kgab32u?action=inviteToCopy",
         "api_service": true
     },
     "bybit_CPT4": {
         "exchange": "bybit",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-
+        "url": "https://i.bybit.com/289mabh9?action=inviteToCopy",
         "api_service": true
     },
     "bybit_CPTDOGEONLY": {
@@ -106,15 +100,14 @@
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "api_service": true
     },
-    "gateio_cpt": {
-        "exchange": "gateio",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-        "url": "https://www.gate.io/en/copytrading/trader/futures/8796?ref=VLIRXFPYBW&ref_type=117"
-    },
     "hl_Gucky_1coin_1dot5x": {
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://app.hyperliquid.xyz/vaults/0xd2f03635901956b950737bbf02463dfad9f2e9e1"
+    },
+    "hl_mani02_SOL": {
+        "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
     },
     "hl_Gucky_2coin_1dot25x": {
         "exchange": "hyperliquid",
