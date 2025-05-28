@@ -222,12 +222,10 @@ class Database():
         symbols = self.conn.query("SELECT DISTINCT symbol FROM position WHERE user = :user",
                                     ttl=0,
                                     params=dict(user=user.name))
-        print(symbols)
         # fetch ohlcv from exchange
         exchange = Exchange(user.exchange, user)
         try:
             for index, sym in symbols.iterrows():
-                print(sym)
                 symbol = sym.iloc[0]
                 if symbol[-4:] == "USDT":
                     symbol_ccxt = f'{symbol[0:-4]}/USDT:USDT'

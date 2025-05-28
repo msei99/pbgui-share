@@ -17,9 +17,6 @@ class PBGShare():
     def update_db(self):
         PBGUI_DB = Path(f'{self.pbgdir}/data/pbgui.db')
         for user in self.users:
-            print(user.name)
-            if user.name != 'hl_mani02_SOL':
-                continue
             print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Update pbgui-share db {user.name}')
             self.db.copy_user_mysql(f'{PBGUI_DB}', user)
             self.db.add_ohlcv(user)
@@ -31,8 +28,8 @@ class PBGShare():
     
 def main():
     logfile = Path(f'PBGShare.log')
-    # sys.stdout = TextIOWrapper(open(logfile,"ab",0), write_through=True)
-    # sys.stderr = TextIOWrapper(open(logfile,"ab",0), write_through=True)
+    sys.stdout = TextIOWrapper(open(logfile,"ab",0), write_through=True)
+    sys.stderr = TextIOWrapper(open(logfile,"ab",0), write_through=True)
     print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Start: PBData')
     pbdata = PBGShare()
     while True:
