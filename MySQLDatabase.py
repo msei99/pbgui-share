@@ -219,7 +219,7 @@ class Database():
         # symbols = self.conn.query("SELECT DISTINCT symbol FROM orders WHERE user = :user",
         #                             ttl=0,
         #                             params=dict(user=user.name))
-        symbols = self.conn.query("SELECT DISTINCT symbol FROM positions WHERE user = :user",
+        symbols = self.conn.query("SELECT DISTINCT symbol FROM position WHERE user = :user",
                                     ttl=0,
                                     params=dict(user=user.name))
         print(symbols)
