@@ -227,7 +227,7 @@ class Database():
         exchange = Exchange(user.exchange, user)
         try:
             for index, sym in symbols.iterrows():
-                print(symbol)
+                print(sym)
                 symbol = sym.iloc[0]
                 if symbol[-4:] == "USDT":
                     symbol_ccxt = f'{symbol[0:-4]}/USDT:USDT'
