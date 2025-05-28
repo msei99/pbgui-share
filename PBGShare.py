@@ -19,7 +19,7 @@ class PBGShare():
         for user in self.users:
             print(user.name)
             if user.name != 'hl_mani02_SOL':
-                return
+                continue
             print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Update pbgui-share db {user.name}')
             self.db.copy_user_mysql(f'{PBGUI_DB}', user)
             self.db.add_ohlcv(user)
