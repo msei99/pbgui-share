@@ -216,9 +216,13 @@ class Database():
                 
     def add_ohlcv(self, user: User):
         # get symbols from table dest.orders
-        symbols = self.conn.query("SELECT DISTINCT symbol FROM orders WHERE user = :user",
+        # symbols = self.conn.query("SELECT DISTINCT symbol FROM orders WHERE user = :user",
+        #                             ttl=0,
+        #                             params=dict(user=user.name))
+        symbols = self.conn.query("SELECT DISTINCT symbol FROM positions WHERE user = :user",
                                     ttl=0,
                                     params=dict(user=user.name))
+        print(symbols)
         # fetch ohlcv from exchange
         exchange = Exchange(user.exchange, user)
         try:
