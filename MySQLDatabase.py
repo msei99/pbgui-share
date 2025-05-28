@@ -223,12 +223,14 @@ class Database():
         exchange = Exchange(user.exchange, user)
         try:
             for index, sym in symbols.iterrows():
+                print(symbol)
                 symbol = sym.iloc[0]
                 if symbol[-4:] == "USDT":
                     symbol_ccxt = f'{symbol[0:-4]}/USDT:USDT'
                 elif symbol[-4:] == "USDC":
                     symbol_ccxt = f'{symbol[0:-4]}/USDC:USDC'
                 ohlcv = exchange.fetch_ohlcv(symbol_ccxt, "futures", "4h", 100)
+                print(ohlcv)
                 #add new table ohlcv with user, symbol and ohlcv dataframe
                 ohlcv_df = pd.DataFrame(ohlcv, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
                 ohlcv_df['user'] = user.name
