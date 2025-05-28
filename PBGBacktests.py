@@ -163,7 +163,7 @@ class PBGBacktests():
                 ed = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
             self.ed = ed
             if user.exchange not in ['binance', 'bybit']:
-                exchange = 'bybit'
+                exchange = 'binance'
             else:
                 exchange = user.exchange
             cmd = [self.pb6venv, '-u', PurePath(f'{self.pb6dir}/backtest_multi.py'), '-bc', str(PurePath(f'{multi}')), '-bd', str(PurePath(f'{base_dir}')), '-sd', sd, '-ed', ed, '-sb', '1000', '-e', exchange]
