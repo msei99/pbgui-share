@@ -90,6 +90,11 @@
         "url": "https://i.bybit.com/XabnGqs?action=inviteToCopy",
         "api_service": true
     },
+    "bybit_NeonQuantum": {
+        "exchange": "bybit",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
+        "url": "https://i.bybit.com/inabmy5?action=inviteToCopy"
+    },
     "bybit_SOLUSDT": {
         "exchange": "bybit",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
