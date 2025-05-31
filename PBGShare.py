@@ -41,10 +41,10 @@ def main():
                     sys.stderr = TextIOWrapper(open(logfile,"ab",0), write_through=True)
             pbdata.update_db()
             # Sleeptime depends on number of users
-            if len(pbdata.users) > 10 and len(pbdata.users) <= 20:
+            if len(pbdata.users.users) > 10 and len(pbdata.users.users) <= 20:
                 print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Between 10 and 20 accounts, sleep for 1 minute')
                 sleep(60)
-            elif len(pbdata.users) > 20:
+            elif len(pbdata.users.users) > 20:
                 print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} More than 20 accounts, no sleep')
             else:
                 print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Sleep for 5 minutes')
