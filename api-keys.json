@@ -110,11 +110,15 @@
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://app.hyperliquid.xyz/vaults/0xd2f03635901956b950737bbf02463dfad9f2e9e1"
     },
+    "hl_mani02_SOL": {
+        "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
+    },
     "hl_mani03_BTC": {
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
     },
-    "hl_mani02_SOL": {
+    "hl_mani03_ETH": {
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
     },
