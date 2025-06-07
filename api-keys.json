@@ -122,7 +122,11 @@
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
     },
-    "hl_mani04_DOGE": {
+    "hl_mani05_DOGE": {
+        "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
+    },
+    "hl_mani06_HYPE10": {
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
     },
