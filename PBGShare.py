@@ -40,6 +40,7 @@ def main():
                     sys.stdout = TextIOWrapper(open(logfile,"ab",0), write_through=True)
                     sys.stderr = TextIOWrapper(open(logfile,"ab",0), write_through=True)
             pbdata.update_db()
+            print(f'{datetime.now().isoformat(sep=" ", timespec="seconds")} Sleep for 5 minutes')
             sleep(300)
             pbdata.users.load()
         except Exception as e:
