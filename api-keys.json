@@ -95,6 +95,11 @@
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/inabmy5?action=inviteToCopy"
     },
+    "HYPErQuantum": {
+        "exchange": "bybit",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
+        "url": "https://i.bybit.com/ab8DFsI?action=inviteToCopy"
+    },
     "bybit_SOLUSDT": {
         "exchange": "bybit",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
