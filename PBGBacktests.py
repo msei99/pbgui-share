@@ -164,8 +164,6 @@ class PBGBacktests():
             self.ed = ed
             if user.exchange not in ['binance', 'bybit']:
                 exchange = 'binance'
-            elif user.name == 'hl_mani06_HYPE10':
-                exchange = 'bybit'
             else:
                 exchange = user.exchange
             cmd = [self.pb6venv, '-u', PurePath(f'{self.pb6dir}/backtest_multi.py'), '-bc', str(PurePath(f'{multi}')), '-bd', str(PurePath(f'{base_dir}')), '-sd', sd, '-ed', ed, '-sb', '1000', '-e', exchange]
@@ -314,6 +312,9 @@ class PBGBacktests():
             config['backtest']["exchange"] = "binance"
         else:
             config['backtest']["exchanges"] = [user.exchange]
+        # Fix for HYPE because of low binance history
+        if user.name == 'hl_mani06_HYPE10':
+            config['backtest']["exchange"] = "bybit"
         config['backtest']["combine_ohlcvs"] = False
         config['backtest']["starting_balance"] = 1000
         # save config
