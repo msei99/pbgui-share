@@ -194,13 +194,13 @@
         "url": "https://i.bybit.com/133abXb8?action=inviteToCopy",
         "api_service": true
     },
-    "Gucky_2coin_1dot5x": {
+    "Bybit_Gucky_4coin": {
         "exchange": "bybit",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/ab21xc5H?action=inviteToCopy",
         "api_service": true
     },
-    "Gucky_4coin_2dot5x": {
+    "Bybit_Gucky_6coin": {
         "exchange": "bybit",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/PBJKabv?action=inviteToCopy",
