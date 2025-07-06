@@ -183,10 +183,20 @@
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://app.hyperliquid.xyz/vaults/0x9bb6e9a1e81b11f938da15126ce6320decc35262"
     },
+    "hl_manicpt_v2": {
+        "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
+        "url": "https://app.hyperliquid.xyz/vaults/0x1ff650ae36c5f2e8fe51d6088fbabb7061a932e3"
+    },
     "hl_manicptpro": {
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://app.hyperliquid.xyz/vaults/0x23b9ede4709fa155a7a13ef7cbf852925a3db319"
+    },
+    "hl_HYPErQuantum": {
+        "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
+        "url": "https://app.hyperliquid.xyz/vaults/0xf8a5e3fd4676123f121a7308c5fb6795cd70a6f6"
     },
     "Gucky_1coin_1dot5x": {
         "exchange": "bybit",
