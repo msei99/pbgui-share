@@ -72,6 +72,12 @@
         "url": "https://i.bybit.com/1RVg8abA",
         "api_service": true
     },
+    "bybit_CPTPro_v3": {
+        "exchange": "bybit",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
+        "url": "https://i.bybit.com/1abfTtiI",
+        "api_service": true
+    },
     "bybit_CPTPro_v2": {
         "exchange": "bybit",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
