@@ -298,6 +298,10 @@
         "exchange": "binance",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "api_service": true
+    },
+    "c10010_api001": {
+        "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
+        "api_service": true
     }
-
 }
