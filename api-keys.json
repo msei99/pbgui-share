@@ -162,6 +162,14 @@
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
     },
+    "hl_mani11_PEPE": {
+        "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
+    },
+    "hl_mani12_PEPE": {
+        "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
+    },
     "hl_Gucky_2coin_1dot25x": {
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
@@ -280,6 +288,11 @@
         "api_service": true
     },
     "c10006_api002": {
+        "exchange": "binance",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
+        "api_service": true
+    },
+    "c10006_api003": {
         "exchange": "binance",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "api_service": true
