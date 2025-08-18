@@ -239,6 +239,11 @@
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://app.hyperliquid.xyz/vaults/0x5338fab05c8012848a5e31dfc951a85947c0a094"
     },
+    "hl_HYPErQuantum4": {
+        "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
+        "url": "https://app.hyperliquid.xyz/vaults/0x5338fab05c8012848a5e31dfc951a85947c0a094"
+    },
     "Gucky_1coin_1dot5x": {
         "exchange": "bybit",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
