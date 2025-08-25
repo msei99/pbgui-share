@@ -214,6 +214,11 @@
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://app.hyperliquid.xyz/vaults/0x1ff650ae36c5f2e8fe51d6088fbabb7061a932e3"
     },
+    "hl_manicpt_v3": {
+        "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
+        "url": "https://app.hyperliquid.xyz/vaults/0x34e74abd5fd4ad50564519d3610a098a8f990315"
+    },
     "hl_manicptpro": {
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
@@ -237,12 +242,12 @@
     "hl_HYPErQuantum3": {
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-        "url": "https://app.hyperliquid.xyz/vaults/0x5338fab05c8012848a5e31dfc951a85947c0a094"
+        "url": "https://app.hyperliquid.xyz/vaults/0x18a7203b633686a016315d7c8e3306c4aee851ee"
     },
     "hl_HYPErQuantum4": {
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-        "url": "https://app.hyperliquid.xyz/vaults/0x5338fab05c8012848a5e31dfc951a85947c0a094"
+        "url": "https://app.hyperliquid.xyz/vaults/0xc16e0bf84ea8c2b85457010602cb6fa030bc1fd4"
     },
     "Gucky_1coin_1dot5x": {
         "exchange": "bybit",
