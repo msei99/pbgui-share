@@ -254,6 +254,11 @@
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://app.hyperliquid.xyz/vaults/0xc16e0bf84ea8c2b85457010602cb6fa030bc1fd4"
     },
+    "hl_HYPErQuantum5": {
+        "exchange": "hyperliquid",
+        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
+        "url": "https://app.hyperliquid.xyz/vaults/0x58240c3ab236fcdf4bd9e3ab1df3b66da3b4fb0e"
+    },
     "hl_WOOFBot": {
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
