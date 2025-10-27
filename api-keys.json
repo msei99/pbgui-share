@@ -1,26 +1,10 @@
 {
-    "binance_CPT": {
-        "exchange": "binance",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-        "url": "https://www.binance.com/en/copy-trading/lead-details/3746904129636329728",
-        "api_service": true
-    },
-    "binance_Gucky_2coin_1dot75x": {
-        "exchange": "binance",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-        "api_service": true
-    },
-    "binance_UNICFG": {
-        "exchange": "binance",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-        "api_service": true
-    },
     "binance_UNIV7": {
         "exchange": "binance",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "api_service": true
     },
-    "bitget_ETHUSDT": {
+    "bitget_bitget_DOGEUSDT": {
         "exchange": "bitget",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "api_service": true
@@ -126,7 +110,7 @@
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://app.hyperliquid.xyz/vaults/0xd2f03635901956b950737bbf02463dfad9f2e9e1"
     },
-    "hl_mani02_SOL": {
+    "hl_mani02_crash_4_1dot5": {
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
     },
@@ -138,39 +122,7 @@
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
     },
-    "hl_mani05_DOGE": {
-        "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
-    },
-    "hl_mani06_HYPE10": {
-        "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
-    },
-    "hl_mani07_SOL2": {
-        "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
-    },
-    "hl_mani08_big6": {
-        "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
-    },
-    "hl_mani09_SHIB": {
-        "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
-    },
-    "hl_mani10_PEPE": {
-        "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
-    },
-    "hl_mani11_PEPE": {
-        "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
-    },
-    "hl_mani12_PEPE": {
-        "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
-    },
-    "hl_mani13_PEPE": {
+    "hl_mani05_ETH": {
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
     },
@@ -187,10 +139,6 @@
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
     },
     "hl_mani17_DOGE": {
-        "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
-    },
-    "hl_mani18_DOGE": {
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests"
     },
@@ -227,21 +175,6 @@
         "exchange": "hyperliquid",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://app.hyperliquid.xyz/vaults/0x1a5c73882b437da4e953bfde380482e2ff5d052c"
-    },
-    "hl_manicpt": {
-        "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-        "url": "https://app.hyperliquid.xyz/vaults/0x9bb6e9a1e81b11f938da15126ce6320decc35262"
-    },
-    "hl_manicpt_v2": {
-        "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-        "url": "https://app.hyperliquid.xyz/vaults/0x1ff650ae36c5f2e8fe51d6088fbabb7061a932e3"
-    },
-    "hl_manicpt_v3": {
-        "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-        "url": "https://app.hyperliquid.xyz/vaults/0x34e74abd5fd4ad50564519d3610a098a8f990315"
     },
     "hl_manicptpro": {
         "exchange": "hyperliquid",
@@ -317,12 +250,6 @@
         "url": "https://i.bybit.com/1DabYP2V?action=inviteToCopy",
         "api_service": true
     },
-    "okx_MAINCPT": {
-        "exchange": "okx",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-        "url": "https://www.okx.com/de/copy-trading/account/818D80B303AF08B6/swap",
-        "api_service": true
-    },
     "tikverylowrisk": {
         "exchange": "bybit",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
@@ -333,46 +260,6 @@
         "exchange": "bybit",
         "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "url": "https://i.bybit.com/wSabu9P?action=inviteToCopy",
-        "api_service": true
-    },
-    "c10002_api001": {
-        "exchange": "okx",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-        "api_service": true
-    },
-    "c10006_api001": {
-        "exchange": "binance",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-        "api_service": true
-    },
-    "c10006_api002": {
-        "exchange": "binance",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-        "api_service": true
-    },
-    "c10006_api003": {
-        "exchange": "binance",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-        "api_service": true
-    },
-    "c10007_api001": {
-        "exchange": "bybit",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-        "api_service": true
-    },
-    "c10008_api001": {
-        "exchange": "binance",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-        "api_service": true
-    },
-    "c10009_api001": {
-        "exchange": "binance",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
-        "api_service": true
-    },
-    "c10010_api001": {
-        "exchange": "hyperliquid",
-        "backtests": "https://github.com/msei99/api-service/blob/main/backtests",
         "api_service": true
     }
 }
